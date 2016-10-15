@@ -2,7 +2,7 @@
 
 Pod::Spec.new do |s|
 	s.name = 'BN_BaseKit'
-	s.version = '1.0.0'
+	s.version = 'master'
 	s.description = '框架'
 	s.summary = 'BN_BaseKit'
 	s.requires_arc = true
