@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
 	s.ios.deployment_target = '7.0'
 	s.source_files = 'CommonFiles_BaseCode/**/*.{h,m}'
 	s.homepage = 'https://github.com/lzcangel/BN_BaseKit'
-	s.source = https://github.com/lzcangel/BN_BaseKit.git
+	s.source = 'https://github.com/lzcangel/BN_BaseKit.git'
 	s.license = 'MIT'
 	s.resources = 'CommonFiles_BaseCode/**/*.{json,png,jpg,gif,js,xib}'
 
