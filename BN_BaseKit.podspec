@@ -2,9 +2,9 @@
 
 Pod::Spec.new do |s|
 	s.name = 'BN_BaseKit'
-	s.version = '1.0.0'
+	s.version = "1.0.0"
 	s.description = '框架'
-	s.summary = 'BN_BaseKit'
+	s.summary = 'BN_BaseKit code'
 	s.requires_arc = true
 	s.ios.deployment_target = '8.0'
 	s.source_files = 'CommonFiles_BaseCode/**/*.{h,m}'
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
 	s.source = { :git => 'https://github.com/lzcangel/BN_BaseKit.git', :tag => s.version}
 	s.license = 'MIT'
 	s.resources = 'CommonFiles_BaseCode/**/*.{json,png,jpg,gif,js,xib}'
-	s.authors  = { 'lzcangel' => 'm@lzcangel.me' }
+	s.authors  = { 'lzcangel' => '592097271@qq.com' }
 	s.swift_version = '3.0'
 
 	s.dependency 'AFNetworking'
