@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
 	s.license = 'MIT'
 	s.resources = 'CommonFiles_BaseCode/**/*.{json,png,jpg,gif,js,xib}'
 	s.authors  = { 'lzcangel' => '592097271@qq.com' }
-	s.swift_version = '3.0'
+	s.swift_version = '2.3'
 
 	s.dependency 'AFNetworking'
 	s.dependency 'SDWebImage'
