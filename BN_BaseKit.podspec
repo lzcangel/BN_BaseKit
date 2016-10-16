@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
 	s.ios.deployment_target = '8.0'
 	s.source_files = 'CommonFiles_BaseCode/**/*.{h,m}'
 	s.homepage = 'https://github.com/lzcangel/BN_BaseKit'
-	s.source = { :git => "https://github.com/lzcangel/BN_BaseKit.git", :tag => "#{s.version}" }
+	s.source = { :git => 'https://github.com/lzcangel/BN_BaseKit.git', :tag => s.version}
 	s.license = 'MIT'
 	s.resources = 'CommonFiles_BaseCode/**/*.{json,png,jpg,gif,js,xib}'
 	s.authors  = { 'lzcangel' => 'm@lzcangel.me' }
