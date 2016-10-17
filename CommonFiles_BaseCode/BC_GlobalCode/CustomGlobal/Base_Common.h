@@ -63,6 +63,8 @@
 #define RECT_CHANGE_height(v,h)     CGRectMake(X(v), Y(v), WIDTH(v), h)
 #define RECT_CHANGE_size(v,w,h)     CGRectMake(X(v), Y(v), w, h)
 
+#define NSLog(s,...) NSLog( @"<%@:(%d)> :%@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
+
 // 系统背景颜色设定
 #define ColorBackground    [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1.0];
 #define ColorTableViewCell [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1.0];
