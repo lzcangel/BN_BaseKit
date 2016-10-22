@@ -22,4 +22,5 @@ Pod::Spec.new do |s|
 	s.dependency 'SWTableViewCell'
 	s.dependency 'HMSegmentedControl'
 	s.dependency 'CTAssetsPickerController'
+	s.dependency 'IQKeyboardManager'
 end
