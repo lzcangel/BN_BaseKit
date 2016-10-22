@@ -9,4 +9,5 @@ pod "ReactiveCocoa", "~> 2.5"
 pod "SWTableViewCell"
 pod "HMSegmentedControl"
 pod "CTAssetsPickerController"
+pod "IQKeyboardManager"
 end
