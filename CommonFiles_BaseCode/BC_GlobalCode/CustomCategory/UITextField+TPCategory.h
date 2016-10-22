@@ -9,6 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface UITextField (TPCategory)
+
+@property(nonatomic,strong)UIDatePicker *datePicker;
+
 - (void)shake;
+
 -(void)setLeftImageWithImage:(NSString *)imageName;
+
+- (void)useDateKeyboard;
+
 @end

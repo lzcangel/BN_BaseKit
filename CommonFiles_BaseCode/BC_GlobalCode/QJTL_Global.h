@@ -12,14 +12,20 @@
 #import"Base_Common.h"
 #import"Base_BaseViewController.h"
 #import"Base_ControlsFactory.h"
+#import "UITableView+FDTemplateLayoutCell.h"
+
 #import "NSString+TPCategory.h"
 #import "UITextField+TPCategory.h"
 #import "UIResponder+TPCategory.h"
 #import "CALayer+TPCategory.h"
 #import "NSArray+TPCategory.h"
 #import "UIImage+TPCategory.h"
+#import "NSString+TPCategory.h"
+#import "UIButton+TPCategory.h"
+#import "UITextField+TPCategory.h"
 #import "UIView+MBIBnspectable.h"
 #import "UITextView+Placeholder.h"
+
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <AFNetworking/AFNetworking.h>
 #import <QuartzCore/QuartzCore.h>

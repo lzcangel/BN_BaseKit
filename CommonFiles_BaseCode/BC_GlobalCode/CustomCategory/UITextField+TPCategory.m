@@ -8,7 +8,31 @@
 
 #import "UITextField+TPCategory.h"
 #import <QuartzCore/QuartzCore.h>
+#import <objc/runtime.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import"Base_Common.h"
+
+
 @implementation UITextField (TPCategory)
+
+- (void)useDateKeyboard
+{
+    self.datePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 0, DeviceWidth, 260)];
+    self.datePicker.minimumDate    = [NSDate date];
+    self.datePicker.datePickerMode = UIDatePickerModeDate;
+    [self.datePicker addTarget:self action:@selector(timerChange:) forControlEvents:UIControlEventValueChanged];
+    self.datePicker.date = [NSDate dateWithTimeIntervalSinceNow:7 * 3600 * 24];
+    self.inputView = self.datePicker;
+}
+
+- (NSNumber *)datePicker {
+    return objc_getAssociatedObject(self, @selector(datePicker));
+}
+
+- (void)setDatePicker:(UIDatePicker *)value {
+    objc_setAssociatedObject(self, @selector(datePicker), value, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
 - (void)shake {
     CAKeyframeAnimation *animationKey = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     [animationKey setDuration:0.5f];
@@ -52,4 +76,28 @@
     self.leftView = leftView;
     self.leftViewMode = UITextFieldViewModeAlways;
 }
+
+#pragma mark - UIDatePicker
+
+- (void)timerChange:(UIDatePicker *)picker
+{
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    
+    NSString *str = [dateFormat stringFromDate:picker.date];
+    
+    if ([self.delegate respondsToSelector:@selector(textField:shouldChangeCharactersInRange:replacementString:)]) {
+        if ( [self.delegate textField:self shouldChangeCharactersInRange:NSMakeRange(0,str.length) replacementString:str] )
+        {
+            self.text = [dateFormat stringFromDate:picker.date];
+            [self sendActionsForControlEvents:UIControlEventAllEditingEvents];
+        }
+    }
+    else
+    {
+        self.text = [dateFormat stringFromDate:picker.date];
+        [self sendActionsForControlEvents:UIControlEventAllEditingEvents];
+    }
+}
+
 @end
