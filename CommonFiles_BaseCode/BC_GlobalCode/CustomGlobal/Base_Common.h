@@ -40,6 +40,9 @@
 #define NavHeight self.navigationController.navigationBar.frame.size.height
 //当前Tab高度
 #define TabHeight self.tabBarController.tabBar.frame.size.height
+//选择器通用高度
+#define TopSegmmentControlHeight 36
+
 // View 坐标(x,y)和宽高(width,height)
 #define X(v)                    (v).frame.origin.x
 #define Y(v)                    (v).frame.origin.y
@@ -63,21 +66,39 @@
 #define RECT_CHANGE_height(v,h)     CGRectMake(X(v), Y(v), WIDTH(v), h)
 #define RECT_CHANGE_size(v,w,h)     CGRectMake(X(v), Y(v), w, h)
 
+//log打印
 #define NSLog(s,...) NSLog( @"<%@:(%d)> :%@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
 
-// 系统背景颜色设定,待补充！！～
-#define ColorBackground    [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1.0];
-#define ColorTableViewCell [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1.0];
-#define ColorTitle         [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1.0];
-#define ColorNav           [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1.0];
-#define ColorTab           [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1.0];
+//判断机型
+#define IS_IPHONE_5_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )736 ) < DBL_EPSILON )
+#define IS_IPHONE_4_7 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )667 ) < DBL_EPSILON )
+#define IS_IPHONE_4_0 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
+#define IS_IPHONE_3_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )480 ) < DBL_EPSILON )
+
+//颜色宏定义
+#define RGB(r,g,b)        [UIColor colorWithRed:r / 255.f green:g / 255.f blue:b / 255.f alpha:1.f]
+#define RGBA(r,g,b,a)     [UIColor colorWithRed:r / 255.f green:g / 255.f blue:b / 255.f alpha:a]
+#define RGBAHEX(hex,a)    RGBA((float)((hex & 0xFF0000) >> 16),(float)((hex & 0xFF00) >> 8),(float)(hex & 0xFF),a)
+
+// 系统颜色设定
+#define ColorBtnYellow     RGBAHEX(0xcaa161,1.0f)
+#define ColorBlack         RGBAHEX(0x000000,1.0f)
+#define ColorGray          RGBAHEX(0x333333,1.0f)
+#define ColorLightGray     RGBAHEX(0x626262,1.0f)
+#define ColorLine          RGBAHEX(0xeeeeee,1.0f)
+#define ColorWhite         RGBAHEX(0xffffff,1.0f)
+#define ColorBackground    RGBAHEX(0xf5f5f5,1.0f)
+
 #define RGBCOLOR(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
 
-#define Font1 [UIFont systemFontOfSize: 13.0]
-#define Font2 [UIFont systemFontOfSize: 14.0]
-#define Font3 [UIFont systemFontOfSize: 15.0]
-#define Font4 [UIFont systemFontOfSize: 16.0]
-#define Font5 [UIFont systemFontOfSize: 17.0]
-#define Font6 [UIFont systemFontOfSize: 18.0]
+
+//系统字体设定
+#define Font1 [UIFont systemFontOfSize: 8.0]
+#define Font2 [UIFont systemFontOfSize: 10.0]
+#define Font3 [UIFont systemFontOfSize: 12.0]
+#define Font4 [UIFont systemFontOfSize: 13.0]
+#define Font5 [UIFont systemFontOfSize: 14.0]
+#define Font6 [UIFont systemFontOfSize: 15.0]
+#define Font7 [UIFont systemFontOfSize: 16.0]
 
 #endif

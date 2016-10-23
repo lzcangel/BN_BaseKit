@@ -63,7 +63,7 @@
 + (UILabel *)createLabelWithFrame:(CGRect)rect text:(NSString *)text
 {
     UILabel *label                  = [[UILabel alloc]initWithFrame:rect];
-    label.textColor                 = ColorTitle;
+    label.textColor                 = ColorGray;
     label.textAlignment             = NSTextAlignmentLeft;
     label.adjustsFontSizeToFitWidth = YES;
     label.backgroundColor           = [UIColor clearColor];

@@ -14,6 +14,13 @@
 #import"Base_ControlsFactory.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 
+#import "UIView+FRCategory.h"
+#import "UILabel+TPCategory.h"
+#import "UIButton+TPCategory.h"
+#import "NSDate+TPCategory.h"
+#import "NSData+TPCategory.h"
+#import "NSArray+TPCategory.h"
+#import "NSDate+PoohCategory.h"
 #import "NSString+TPCategory.h"
 #import "UITextField+TPCategory.h"
 #import "UIResponder+TPCategory.h"
