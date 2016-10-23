@@ -12,6 +12,14 @@
 #import"Base_Common.h"
 #import"Base_BaseViewController.h"
 #import"Base_ControlsFactory.h"
+
+#import "UIView+FRCategory.h"
+#import "UILabel+TPCategory.h"
+#import "UIButton+TPCategory.h"
+#import "NSDate+TPCategory.h"
+#import "NSData+TPCategory.h"
+#import "NSArray+TPCategory.h"
+#import "NSDate+PoohCategory.h"
 #import "NSString+TPCategory.h"
 #import "UITextField+TPCategory.h"
 #import "UIResponder+TPCategory.h"
@@ -20,6 +28,7 @@
 #import "UIImage+TPCategory.h"
 #import "UIView+MBIBnspectable.h"
 #import "UITextView+Placeholder.h"
+
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <AFNetworking/AFNetworking.h>
 #import <QuartzCore/QuartzCore.h>

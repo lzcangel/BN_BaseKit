@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3E457583649C3B8E52AE5C7B /* libPods-BN_BaseKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F202D5B72791F82B3A82F3AF /* libPods-BN_BaseKit.a */; };
+		8476357D1DBCBB3500194603 /* UIView+FRCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8476357C1DBCBB3500194603 /* UIView+FRCategory.m */; };
+		847635801DBCBCC100194603 /* NSDate+PoohCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8476357F1DBCBCC100194603 /* NSDate+PoohCategory.m */; };
+		847635831DBCC3FC00194603 /* NSDateFormatter+PoohCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 847635821DBCC3FC00194603 /* NSDateFormatter+PoohCategory.m */; };
 		C9DB04071DB2586100F1D87A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DB04061DB2586100F1D87A /* main.m */; };
 		C9DB040A1DB2586100F1D87A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DB04091DB2586100F1D87A /* AppDelegate.m */; };
 		C9DB040D1DB2586100F1D87A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DB040C1DB2586100F1D87A /* ViewController.m */; };
@@ -58,6 +61,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8476357B1DBCBB3500194603 /* UIView+FRCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FRCategory.h"; sourceTree = "<group>"; };
+		8476357C1DBCBB3500194603 /* UIView+FRCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FRCategory.m"; sourceTree = "<group>"; };
+		8476357E1DBCBCC100194603 /* NSDate+PoohCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+PoohCategory.h"; sourceTree = "<group>"; };
+		8476357F1DBCBCC100194603 /* NSDate+PoohCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+PoohCategory.m"; sourceTree = "<group>"; };
+		847635811DBCC3FC00194603 /* NSDateFormatter+PoohCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+PoohCategory.h"; sourceTree = "<group>"; };
+		847635821DBCC3FC00194603 /* NSDateFormatter+PoohCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+PoohCategory.m"; sourceTree = "<group>"; };
 		C9DB04021DB2586100F1D87A /* BN_BaseKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BN_BaseKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9DB04061DB2586100F1D87A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C9DB04081DB2586100F1D87A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -266,6 +275,10 @@
 		C9DB043B1DB258BD00F1D87A /* CustomCategory */ = {
 			isa = PBXGroup;
 			children = (
+				847635811DBCC3FC00194603 /* NSDateFormatter+PoohCategory.h */,
+				847635821DBCC3FC00194603 /* NSDateFormatter+PoohCategory.m */,
+				8476357E1DBCBCC100194603 /* NSDate+PoohCategory.h */,
+				8476357F1DBCBCC100194603 /* NSDate+PoohCategory.m */,
 				C9DB043C1DB258BD00F1D87A /* CALayer+TPCategory.h */,
 				C9DB043D1DB258BD00F1D87A /* CALayer+TPCategory.m */,
 				C9DB043E1DB258BD00F1D87A /* NSArray+TPCategory.h */,
@@ -292,6 +305,8 @@
 				C9DB04531DB258BD00F1D87A /* UITextView+Placeholder.m */,
 				C9DB04541DB258BD00F1D87A /* UIView+MBIBnspectable.h */,
 				C9DB04551DB258BD00F1D87A /* UIView+MBIBnspectable.m */,
+				8476357B1DBCBB3500194603 /* UIView+FRCategory.h */,
+				8476357C1DBCBB3500194603 /* UIView+FRCategory.m */,
 			);
 			path = CustomCategory;
 			sourceTree = "<group>";
@@ -545,13 +560,16 @@
 			files = (
 				C9DB040D1DB2586100F1D87A /* ViewController.m in Sources */,
 				C9DB047C1DB258BD00F1D87A /* UIView+MBIBnspectable.m in Sources */,
+				8476357D1DBCBB3500194603 /* UIView+FRCategory.m in Sources */,
 				C9DB04831DB258BD00F1D87A /* UITableView+FDKeyedHeightCache.m in Sources */,
 				C9DB047D1DB258BD00F1D87A /* Base_BaseViewController.m in Sources */,
 				C9DB047A1DB258BD00F1D87A /* UITextField+TPCategory.m in Sources */,
 				C9DB04731DB258BD00F1D87A /* NSDate+TPCategory.m in Sources */,
 				C9DB04711DB258BD00F1D87A /* NSArray+TPCategory.m in Sources */,
 				C9DB04701DB258BD00F1D87A /* CALayer+TPCategory.m in Sources */,
+				847635831DBCC3FC00194603 /* NSDateFormatter+PoohCategory.m in Sources */,
 				C9DB040A1DB2586100F1D87A /* AppDelegate.m in Sources */,
+				847635801DBCBCC100194603 /* NSDate+PoohCategory.m in Sources */,
 				C9DB04751DB258BD00F1D87A /* UIButton+TPCategory.m in Sources */,
 				C9DB04741DB258BD00F1D87A /* NSString+TPCategory.m in Sources */,
 				C9DB04781DB258BD00F1D87A /* UINavigationBar+Awesome.m in Sources */,
