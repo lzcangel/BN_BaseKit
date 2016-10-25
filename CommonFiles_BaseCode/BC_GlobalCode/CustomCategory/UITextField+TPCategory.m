@@ -12,16 +12,22 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import"Base_Common.h"
 
+@interface UITextField()
+
+@property (nonatomic, strong)NSString *dateFormatStr;
+
+@end
 
 @implementation UITextField (TPCategory)
 
-- (void)useDateKeyboard
+- (void)useDateKeyboard:(NSString *)dateFormatStr
 {
     self.datePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 0, DeviceWidth, 260)];
     self.datePicker.minimumDate    = [NSDate date];
     self.datePicker.datePickerMode = UIDatePickerModeDate;
     [self.datePicker addTarget:self action:@selector(timerChange:) forControlEvents:UIControlEventValueChanged];
     self.datePicker.date = [NSDate dateWithTimeIntervalSinceNow:7 * 3600 * 24];
+    self.dateFormatStr = dateFormatStr?:@"yyyy-MM-dd";
     self.inputView = self.datePicker;
 }
 
@@ -31,6 +37,14 @@
 
 - (void)setDatePicker:(UIDatePicker *)value {
     objc_setAssociatedObject(self, @selector(datePicker), value, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSNumber *)dateFormatStr {
+    return objc_getAssociatedObject(self, @selector(dateFormatStr));
+}
+
+- (void)setDateFormatStr:(UIDatePicker *)value {
+    objc_setAssociatedObject(self, @selector(dateFormatStr), value, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (void)shake {
@@ -82,7 +96,7 @@
 - (void)timerChange:(UIDatePicker *)picker
 {
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    [dateFormat setDateFormat:self.dateFormatStr];
     
     NSString *str = [dateFormat stringFromDate:picker.date];
     

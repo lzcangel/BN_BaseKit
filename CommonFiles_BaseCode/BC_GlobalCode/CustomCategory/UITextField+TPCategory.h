@@ -16,6 +16,6 @@
 
 -(void)setLeftImageWithImage:(NSString *)imageName;
 
-- (void)useDateKeyboard;
+- (void)useDateKeyboard:(NSString *)dateFormatStr;
 
 @end
