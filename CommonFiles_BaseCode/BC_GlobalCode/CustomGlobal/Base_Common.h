@@ -18,7 +18,7 @@
 
 #define IMAGEOriginal(name) [IMAGE(name) imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
 
-#define TEXT(name) [NSString imageNamed:name]
+#define TEXT(name) NSLocalizedString(name, nil)
 
 ///DocumentPath路径设置
 #define DocumentPath [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
@@ -93,12 +93,12 @@
 
 
 //系统字体设定
-#define Font1 [UIFont systemFontOfSize: 8.0]
-#define Font2 [UIFont systemFontOfSize: 10.0]
-#define Font3 [UIFont systemFontOfSize: 12.0]
-#define Font4 [UIFont systemFontOfSize: 13.0]
-#define Font5 [UIFont systemFontOfSize: 14.0]
-#define Font6 [UIFont systemFontOfSize: 15.0]
-#define Font7 [UIFont systemFontOfSize: 16.0]
+#define Font8 [UIFont systemFontOfSize: 8.0]
+#define Font10 [UIFont systemFontOfSize: 10.0]
+#define Font12 [UIFont systemFontOfSize: 12.0]
+#define Font13 [UIFont systemFontOfSize: 13.0]
+#define Font14 [UIFont systemFontOfSize: 14.0]
+#define Font15 [UIFont systemFontOfSize: 15.0]
+#define Font16 [UIFont systemFontOfSize: 16.0]
 
 #endif
