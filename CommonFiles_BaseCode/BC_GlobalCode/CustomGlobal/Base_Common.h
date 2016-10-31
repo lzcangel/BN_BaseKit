@@ -88,6 +88,7 @@
 #define ColorLine          RGBAHEX(0xeeeeee,1.0f)
 #define ColorWhite         RGBAHEX(0xffffff,1.0f)
 #define ColorBackground    RGBAHEX(0xf5f5f5,1.0f)
+#define ColorRed           RGBAHEX(0xe5262a,1.0f)
 
 #define RGBCOLOR(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
 

@@ -40,4 +40,6 @@
 #import <UIKit/UIKit.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 
+#import "EnlargeButton.h"
+
 #endif

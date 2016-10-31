@@ -24,6 +24,7 @@
 		847635B21DBCC82300194603 /* UITextView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 847635A01DBCC82300194603 /* UITextView+Placeholder.m */; };
 		847635B31DBCC82300194603 /* UIView+FRCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 847635A21DBCC82300194603 /* UIView+FRCategory.m */; };
 		847635B41DBCC82300194603 /* UIView+MBIBnspectable.m in Sources */ = {isa = PBXBuildFile; fileRef = 847635A41DBCC82300194603 /* UIView+MBIBnspectable.m */; };
+		84F6BB651DC6EF0A009ED8DF /* EnlargeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F6BB641DC6EF0A009ED8DF /* EnlargeButton.m */; };
 		C998BFA91DB3A3E900F46F50 /* BC_ToolRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C998BFA81DB3A3E900F46F50 /* BC_ToolRequest.m */; };
 		C9DB04071DB2586100F1D87A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DB04061DB2586100F1D87A /* main.m */; };
 		C9DB040A1DB2586100F1D87A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DB04091DB2586100F1D87A /* AppDelegate.m */; };
@@ -94,6 +95,8 @@
 		847635A21DBCC82300194603 /* UIView+FRCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FRCategory.m"; sourceTree = "<group>"; };
 		847635A31DBCC82300194603 /* UIView+MBIBnspectable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MBIBnspectable.h"; sourceTree = "<group>"; };
 		847635A41DBCC82300194603 /* UIView+MBIBnspectable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MBIBnspectable.m"; sourceTree = "<group>"; };
+		84F6BB631DC6EF0A009ED8DF /* EnlargeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnlargeButton.h; sourceTree = "<group>"; };
+		84F6BB641DC6EF0A009ED8DF /* EnlargeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnlargeButton.m; sourceTree = "<group>"; };
 		C998BFA71DB3A3E900F46F50 /* BC_ToolRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BC_ToolRequest.h; sourceTree = "<group>"; };
 		C998BFA81DB3A3E900F46F50 /* BC_ToolRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BC_ToolRequest.m; sourceTree = "<group>"; };
 		C9DB04021DB2586100F1D87A /* BN_BaseKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BN_BaseKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -219,6 +222,15 @@
 			path = CustomCategory;
 			sourceTree = "<group>";
 		};
+		84F6BB621DC6EEF4009ED8DF /* CustomViewExt */ = {
+			isa = PBXGroup;
+			children = (
+				84F6BB631DC6EF0A009ED8DF /* EnlargeButton.h */,
+				84F6BB641DC6EF0A009ED8DF /* EnlargeButton.m */,
+			);
+			path = CustomViewExt;
+			sourceTree = "<group>";
+		};
 		C998BFA61DB3A39800F46F50 /* BC_NetworkRequest */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,6 +327,7 @@
 		C9DB043A1DB258BD00F1D87A /* BC_GlobalCode */ = {
 			isa = PBXGroup;
 			children = (
+				84F6BB621DC6EEF4009ED8DF /* CustomViewExt */,
 				847635841DBCC82300194603 /* CustomCategory */,
 				C9DB04561DB258BD00F1D87A /* CustomController */,
 				C9DB045B1DB258BD00F1D87A /* CustomGlobal */,
@@ -591,6 +604,7 @@
 				C9DB047F1DB258BD00F1D87A /* Base_ControlsFactory.m in Sources */,
 				847635AF1DBCC82300194603 /* UINavigationBar+Awesome.m in Sources */,
 				847635AC1DBCC82300194603 /* UIButton+TPCategory.m in Sources */,
+				84F6BB651DC6EF0A009ED8DF /* EnlargeButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

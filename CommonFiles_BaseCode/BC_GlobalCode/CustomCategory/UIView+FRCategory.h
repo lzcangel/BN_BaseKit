@@ -2,7 +2,7 @@
 //  UIView+FRCategory.h
 //  BN_BaseKit
 //
-//  Created by dhxiang on 16/10/23.
+//  Created by Diana on 16/10/23.
 //  Copyright © 2016年 GL_RunMan. All rights reserved.
 //
 
