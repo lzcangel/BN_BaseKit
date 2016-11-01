@@ -10,4 +10,6 @@ pod "SWTableViewCell"
 pod "HMSegmentedControl"
 pod "CTAssetsPickerController"
 pod "IQKeyboardManager"
+pod 'ASIHTTPRequest'
+
 end

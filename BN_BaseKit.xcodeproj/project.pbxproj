@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		23E6097BBE9F87868EA719F1 /* libPods-BN_BaseKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E73F5CEABF62746C7D78FB1D /* libPods-BN_BaseKit.a */; };
+		8420B6711DC8867300A8F864 /* Base_Network.m in Sources */ = {isa = PBXBuildFile; fileRef = 8420B6701DC8867300A8F864 /* Base_Network.m */; };
 		847635A51DBCC82300194603 /* CALayer+TPCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 847635861DBCC82300194603 /* CALayer+TPCategory.m */; };
 		847635A61DBCC82300194603 /* NSArray+TPCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 847635881DBCC82300194603 /* NSArray+TPCategory.m */; };
 		847635A71DBCC82300194603 /* NSData+TPCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8476358A1DBCC82300194603 /* NSData+TPCategory.m */; };
@@ -63,6 +64,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8420B66F1DC8867300A8F864 /* Base_Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base_Network.h; sourceTree = "<group>"; };
+		8420B6701DC8867300A8F864 /* Base_Network.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base_Network.m; sourceTree = "<group>"; };
 		847635851DBCC82300194603 /* CALayer+TPCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+TPCategory.h"; sourceTree = "<group>"; };
 		847635861DBCC82300194603 /* CALayer+TPCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+TPCategory.m"; sourceTree = "<group>"; };
 		847635871DBCC82300194603 /* NSArray+TPCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+TPCategory.h"; sourceTree = "<group>"; };
@@ -181,6 +184,15 @@
 				EBEC046F409E0F1698A54C82 /* Pods-BN_BaseKit.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		8420B66E1DC8863800A8F864 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8420B66F1DC8867300A8F864 /* Base_Network.h */,
+				8420B6701DC8867300A8F864 /* Base_Network.m */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		847635841DBCC82300194603 /* CustomCategory */ = {
@@ -327,6 +339,7 @@
 		C9DB043A1DB258BD00F1D87A /* BC_GlobalCode */ = {
 			isa = PBXGroup;
 			children = (
+				8420B66E1DC8863800A8F864 /* Utils */,
 				84F6BB621DC6EEF4009ED8DF /* CustomViewExt */,
 				847635841DBCC82300194603 /* CustomCategory */,
 				C9DB04561DB258BD00F1D87A /* CustomController */,
@@ -461,6 +474,7 @@
 				TargetAttributes = {
 					C9DB04011DB2586100F1D87A = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 2V3T4T4V4S;
 						ProvisioningStyle = Automatic;
 					};
 					C9DB041A1DB2586100F1D87A = {
@@ -551,7 +565,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		27433A85B327DC5C76AFC81D /* [CP] Copy Pods Resources */ = {
@@ -591,6 +605,7 @@
 				847635AE1DBCC82300194603 /* UILabel+TPCategory.m in Sources */,
 				C9DB04071DB2586100F1D87A /* main.m in Sources */,
 				847635AA1DBCC82300194603 /* NSDateFormatter+PoohCategory.m in Sources */,
+				8420B6711DC8867300A8F864 /* Base_Network.m in Sources */,
 				847635B31DBCC82300194603 /* UIView+FRCategory.m in Sources */,
 				847635A61DBCC82300194603 /* NSArray+TPCategory.m in Sources */,
 				847635B41DBCC82300194603 /* UIView+MBIBnspectable.m in Sources */,
@@ -752,6 +767,7 @@
 			baseConfigurationReference = EAFDA6188D66585D3E87D592 /* Pods-BN_BaseKit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 2V3T4T4V4S;
 				INFOPLIST_FILE = BN_BaseKit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -765,6 +781,7 @@
 			baseConfigurationReference = EBEC046F409E0F1698A54C82 /* Pods-BN_BaseKit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 2V3T4T4V4S;
 				INFOPLIST_FILE = BN_BaseKit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
