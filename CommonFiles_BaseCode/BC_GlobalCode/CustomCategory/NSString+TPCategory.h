@@ -71,6 +71,13 @@
 - (BOOL) isURLString;
 - (BOOL) isNumberString;
 - (BOOL) containsChinese;
+//密码 6 - 20位 字母、数字或下划线组成
+- (BOOL) validatePassword;
+//判断手机号
+- (BOOL) validateMobile;
+//判断身份证号
+- (BOOL) validateIdentityCard;
+
 /** Returns a `NSString` that properly replaces HTML specific character sequences.
  @return An escaped HTML string.
  */
