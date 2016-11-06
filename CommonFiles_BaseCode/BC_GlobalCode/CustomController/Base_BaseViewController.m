@@ -184,6 +184,31 @@
     if(refreshDatablock != nil)refreshDatablock();
 }
 
+#pragma mark ---------------------------------------------------------------------------------------------------------------
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+- (void)dealloc
+{
+    NSLog(@"%@已成功释放",self);
+}
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end
+
+@implementation Base_BaseViewController (BaseViewControllerCreate)
+
 #pragma mark -
 #pragma mark 常用控件创建
 #pragma mark ---------------------------------------------------------------------------------------------------------------
@@ -235,28 +260,5 @@
     UITextField *textField = [Base_ControlsFactory getTextFieldWithFrame:rect withTitle:title withPlaceholder:placeholederText rightTitle:rightTitle];
     return textField;
 }
-
-
-
-#pragma mark ---------------------------------------------------------------------------------------------------------------
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
-- (void)dealloc
-{
-    NSLog(@"%@已成功释放",self);
-}
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
