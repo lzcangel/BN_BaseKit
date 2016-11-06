@@ -207,7 +207,7 @@
     [self.layer addSublayer:lineLayer];
 }
 
-
+#pragma mark - 绘图
 //标题
 - (CATextLayer *)createTitleLayerWithString:(NSString *)string position:(CGPoint)position color:(UIColor *)color {
     CGSize size = [self calculateTitleSizeWithString:string];
