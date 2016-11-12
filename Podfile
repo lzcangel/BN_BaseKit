@@ -12,5 +12,6 @@ pod "CTAssetsPickerController"
 pod "IQKeyboardManager"
 pod 'ASIHTTPRequest'
 pod 'MJRefresh'
+pod 'MJExtension'
 
 end

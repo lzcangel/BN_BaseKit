@@ -25,4 +25,5 @@ Pod::Spec.new do |s|
 	s.dependency 'IQKeyboardManager'
 	s.dependency 'MJRefresh'
 	s.dependency 'Reachability'
+	s.dependency 'MJExtension'
 end
