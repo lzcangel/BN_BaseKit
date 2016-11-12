@@ -9,6 +9,23 @@
 #import <Foundation/Foundation.h>
 #import <AFNetworking/AFNetworking.h>
 
+//刷新所有存活界面通知
+#define BN_RefreshAllView @"BN_UDJRAVi_JMX546"
+
+//用户token过期通知
+#define BN_NetTokenExpiredEvent @"BN_EirAVi_J2X5s6"
+
+typedef NS_ENUM(NSInteger, NetLoadEvent) {
+    NetLoadSuccessfulEvent  = 0,//成功
+    NetFailureEvent         = 1,//失败
+    NetTokenExpiredEvent    = 2,//用户token无效
+    NetNotCertifiedEvent    = 4,//您还未认证，请先认证
+    NetUnderReviewEvent     = 10,//您的认证正在审核中，请稍等
+    NetCertifiedFailedEvent = 11,//您的资料认证失败
+    NetLoadingEvent         = 1001,//正在加载中
+    NetLoadFailedEvent      = 1002,//网络请求失败
+};
+
 @interface BC_ToolRequest : NSObject
 
 +(BC_ToolRequest *)sharedManager;

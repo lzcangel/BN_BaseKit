@@ -8,9 +8,21 @@
 
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
+#import "BC_ToolRequest.h"
+
+@interface BN_ArrayLoadSupport : NSObject
+
+@property(nonatomic,assign)NetLoadEvent loadEvent;
+
+@end
 
 @interface NSArray (TPCategory)
 
 @property(nonatomic,strong)NSNumber *networkTotal;
 
+@property(nonatomic,strong)BN_ArrayLoadSupport *loadSupport;
+
+- (instancetype)initFromNet;
+
 @end
+

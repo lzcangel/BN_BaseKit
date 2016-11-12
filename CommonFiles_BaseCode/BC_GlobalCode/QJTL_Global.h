@@ -13,6 +13,7 @@
 #import"Base_BaseViewController.h"
 #import"Base_ControlsFactory.h"
 #import "UITableView+FDTemplateLayoutCell.h"
+#import "MJExtension.h"
 
 #import "UIView+FRCategory.h"
 #import "UILabel+TPCategory.h"
@@ -32,6 +33,7 @@
 #import "UITextField+TPCategory.h"
 #import "UIView+MBIBnspectable.h"
 #import "UITextView+Placeholder.h"
+#import "UIView+LoadCategory.h"
 
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <AFNetworking/AFNetworking.h>

@@ -23,4 +23,6 @@ Pod::Spec.new do |s|
 	s.dependency 'HMSegmentedControl'
 	s.dependency 'CTAssetsPickerController'
 	s.dependency 'IQKeyboardManager'
+	s.dependency 'MJRefresh'
+	s.dependency 'Reachability'
 end

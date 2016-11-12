@@ -11,5 +11,6 @@ pod "HMSegmentedControl"
 pod "CTAssetsPickerController"
 pod "IQKeyboardManager"
 pod 'ASIHTTPRequest'
+pod 'MJRefresh'
 
 end
