@@ -10,9 +10,13 @@
 #import <objc/runtime.h>
 #import "BC_ToolRequest.h"
 
+typedef void (^BN_dataRefreshRBlock)();
+
 @interface BN_ArrayLoadSupport : NSObject
 
 @property(nonatomic,assign)NetLoadEvent loadEvent;
+
+- (void)setDataRefreshblock:(BN_dataRefreshRBlock)block;
 
 @end
 

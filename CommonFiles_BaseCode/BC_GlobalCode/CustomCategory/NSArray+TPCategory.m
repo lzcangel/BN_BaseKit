@@ -8,7 +8,26 @@
 
 #import "NSArray+TPCategory.h"
 
+@interface BN_ArrayLoadSupport()
+
+@property (nonatomic, copy)BN_dataRefreshRBlock refreshDatablock;
+
+@end
+
 @implementation BN_ArrayLoadSupport
+
+- (void)setLoadEvent:(NetLoadEvent)loadEvent
+{
+    _loadEvent = loadEvent;
+    if (loadEvent == NetLoadSuccessfulEvent && self.refreshDatablock != nil) {
+        self.refreshDatablock();
+    }
+}
+
+- (void)setDataRefreshblock:(BN_dataRefreshRBlock)block
+{
+    self.refreshDatablock = block;
+}
 
 @end
 
