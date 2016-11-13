@@ -7,6 +7,7 @@
 //
 
 #import "BN_FilterMenu.h"
+#import "Base_Common.h"
 
 #define BN_FilterSeparatorColor [UIColor colorWithRed:219/255.0 green:219/255.0 blue:219/255.0 alpha:1]
 #define kSeparatorColor [UIColor colorWithRed:219/255.0 green:219/255.0 blue:219/255.0 alpha:1]
