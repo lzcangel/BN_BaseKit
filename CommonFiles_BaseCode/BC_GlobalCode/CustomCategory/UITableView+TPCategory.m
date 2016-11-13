@@ -62,9 +62,9 @@ static const void *footerUtilityKey = &footerUtilityKey;
     }];
 
     
-    self.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        temp.footerRefreshDatablock();
-    }];
+//    self.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+//        temp.footerRefreshDatablock();
+//    }];
 }
 
 - (void)setTableViewData:(NSMutableArray *)dataArray
