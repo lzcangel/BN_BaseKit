@@ -34,6 +34,7 @@
 #import "UIView+MBIBnspectable.h"
 #import "UITextView+Placeholder.h"
 #import "UIView+LoadCategory.h"
+#import "UITableView+TPCategory.h"
 
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <AFNetworking/AFNetworking.h>
