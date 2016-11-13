@@ -80,7 +80,6 @@ static BC_ToolRequest *toolRequest = nil;
     self.requestCount ++;
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html",@"text/json",@"text/javascript", nil];
-    [manager.requestSerializer setCachePolicy:NSURLRequestReturnCacheDataElseLoad];
     
     [manager GET:URLString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(task,responseObject);
@@ -99,7 +98,6 @@ static BC_ToolRequest *toolRequest = nil;
     self.requestCount ++;
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html",@"text/json",@"text/javascript", nil];
-    [manager.requestSerializer setCachePolicy:NSURLRequestReturnCacheDataElseLoad];
     
     [manager POST:URLString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(task,responseObject);
@@ -118,7 +116,6 @@ static BC_ToolRequest *toolRequest = nil;
     self.requestCount ++;
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html",@"text/json",@"text/javascript", nil];
-    [manager.requestSerializer setCachePolicy:NSURLRequestReturnCacheDataElseLoad];
     
     [manager PUT:URLString parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(task,responseObject);
@@ -137,7 +134,6 @@ static BC_ToolRequest *toolRequest = nil;
     self.requestCount ++;
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html",@"text/json",@"text/javascript", nil];
-    [manager.requestSerializer setCachePolicy:NSURLRequestReturnCacheDataElseLoad];
     
     [manager DELETE:URLString parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(task,responseObject);
