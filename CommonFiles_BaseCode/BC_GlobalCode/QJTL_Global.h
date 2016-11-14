@@ -36,6 +36,7 @@
 #import "UIView+LoadCategory.h"
 #import "UITableView+TPCategory.h"
 #import "BC_ToolRequest.h"
+#import "BN_BaseDataModel.h"
 
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <AFNetworking/AFNetworking.h>

@@ -9,22 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
 #import "BC_ToolRequest.h"
+#import "BN_LoadSupport.h"
+#import "BN_DataModel.h"
 
-typedef void (^BN_dataRefreshRBlock)();
-
-@interface BN_ArrayLoadSupport : NSObject
-
-@property(nonatomic,assign)NetLoadEvent loadEvent;
-
-- (void)setDataRefreshblock:(BN_dataRefreshRBlock)block;
-
-@end
-
-@interface NSArray (TPCategory)
+@interface NSArray (TPCategory)<BN_DataModel>
 
 @property(nonatomic,strong)NSNumber *networkTotal;
-
-@property(nonatomic,strong)BN_ArrayLoadSupport *loadSupport;
 
 - (instancetype)initFromNet;
 

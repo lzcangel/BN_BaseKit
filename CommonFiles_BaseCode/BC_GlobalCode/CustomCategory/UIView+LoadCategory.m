@@ -29,11 +29,25 @@ static const void *UtilityKey = &UtilityKey;
     return objc_getAssociatedObject(self, @selector(noDataView));
 }
 
-- (void)setNoDataView:(UIView *)value {
+- (void)setNoDataView:(RACDisposable *)value {
     objc_setAssociatedObject(self, @selector(noDataView), value, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
+- (RACDisposable *)bn_disposable {
+    return objc_getAssociatedObject(self, @selector(bn_disposable));
+}
 
+- (void)setBn_disposable:(RACDisposable *)value {
+    objc_setAssociatedObject(self, @selector(bn_disposable), value, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (id<BN_DataModel>)bn_data {
+    return objc_getAssociatedObject(self, @selector(bn_data));
+}
+
+- (void)setBn_data:(id<BN_DataModel>)value {
+    objc_setAssociatedObject(self, @selector(bn_data), value, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
 
 - (NSNumber *)netTag {
     return objc_getAssociatedObject(self, @selector(netTag));
@@ -68,8 +82,24 @@ static const void *UtilityKey = &UtilityKey;
      ];
 }
 
+- (void)loadData:(id<BN_DataModel>)data
+{
+    if (self.bn_disposable != nil)
+    {
+        self.bn_data = nil;
+        [self.bn_disposable dispose];
+        self.bn_disposable = nil;
+    }
+    self.bn_data = data;
+    @weakify(self);
+    self.bn_disposable = [RACObserve(data.loadSupport, loadEvent) subscribeNext:^(id x) {
+        @strongify(self);
+        [self loadingState:self.bn_data.loadSupport.loadEvent data:self.bn_data];
+    }];
+}
 
-- (void)loadingState:(int)state data:(id)data
+
+- (void)loadingState:(int)state data:(id<BN_DataModel>)data
 {
     self.netTag = [NSNumber numberWithInt:state];
     if([self isKindOfClass:[UITableView class]])
@@ -92,7 +122,7 @@ static const void *UtilityKey = &UtilityKey;
         case NetLoadSuccessfulEvent://成功
         {
             [self.netLoadView removeFromSuperview];
-            if(data == nil || ([data isKindOfClass:[NSArray class]] && ((NSArray *)data).count == 0))
+            if(data.loadSupport.haveData == NO || ([data isKindOfClass:[NSArray class]] && ((NSArray *)data).count == 0))
             {
                 self.noDataView = [[[NSBundle mainBundle] loadNibNamed:@"BN_NoDataView" owner:nil options:nil] firstObject];
                 self.noDataView.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
@@ -109,7 +139,7 @@ static const void *UtilityKey = &UtilityKey;
             break;
         case NetFailureEvent://失败
         {
-            if(data == nil)
+            if(data.loadSupport.haveData == NO || ([data isKindOfClass:[NSArray class]] && ((NSArray *)data).count == 0))
             {
                 [self.netLoadView setImage:IMAGE(@"SJR_NetFailureEvent") forState:UIControlStateNormal];
                 [self.netLoadView setTitle:@"" forState:UIControlStateNormal];
@@ -162,7 +192,7 @@ static const void *UtilityKey = &UtilityKey;
             break;
         case NetLoadingEvent://正在加载中
         {
-            if(data == nil  || ([data isKindOfClass:[NSArray class]] && ((NSArray *)data).count == 0))
+            if(data.loadSupport.haveData == NO  || ([data isKindOfClass:[NSArray class]] && ((NSArray *)data).count == 0))
             {
                 [self.netLoadView setImage:nil forState:UIControlStateNormal];
                 [self.netLoadView setTitle:@"" forState:UIControlStateNormal];
@@ -180,7 +210,7 @@ static const void *UtilityKey = &UtilityKey;
             break;
         case NetLoadFailedEvent://网络请求失败
         {
-            if(data == nil)
+            if(data.loadSupport.haveData == NO || ([data isKindOfClass:[NSArray class]] && ((NSArray *)data).count == 0))
             {
                 self.netLoadView.backgroundColor = [UIColor whiteColor];
                 [self.netLoadView setImage:IMAGE(@"SJR_NetLoadFailedEvent") forState:UIControlStateNormal];

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "BN_NoDataView.h"
+#import "BN_DataModel.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 typedef void (^UINetBlock)();
 
@@ -17,8 +19,10 @@ typedef void (^UINetBlock)();
 @property (nonatomic,strong)BN_NoDataView *noDataView;
 @property (nonatomic,strong)NSNumber *netTag;
 @property (nonatomic, copy)UINetBlock refreshDatablock;
+@property (nonatomic, strong)RACDisposable *bn_disposable;
+@property (nonatomic, strong)id<BN_DataModel> bn_data;
 
-- (void)loadingState:(int)state data:(id)data;
+- (void)loadData:(id<BN_DataModel>)data;
 
 - (void)setRefreshBlock:(UINetBlock)block;
 

@@ -26,6 +26,8 @@
 		847635B31DBCC82300194603 /* UIView+FRCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 847635A21DBCC82300194603 /* UIView+FRCategory.m */; };
 		847635B41DBCC82300194603 /* UIView+MBIBnspectable.m in Sources */ = {isa = PBXBuildFile; fileRef = 847635A41DBCC82300194603 /* UIView+MBIBnspectable.m */; };
 		84F6BB651DC6EF0A009ED8DF /* EnlargeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F6BB641DC6EF0A009ED8DF /* EnlargeButton.m */; };
+		C977F6DD1DD9FEF500F75B24 /* BN_BaseDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C977F6DC1DD9FEF400F75B24 /* BN_BaseDataModel.m */; };
+		C977F6E01DDA037E00F75B24 /* BN_LoadSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = C977F6DF1DDA037E00F75B24 /* BN_LoadSupport.m */; };
 		C998BFA91DB3A3E900F46F50 /* BC_ToolRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C998BFA81DB3A3E900F46F50 /* BC_ToolRequest.m */; };
 		C9C7F7271DCF88BD00385B1A /* BN_FilterMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C7F7261DCF88BD00385B1A /* BN_FilterMenu.m */; };
 		C9C7F72D1DD2181200385B1A /* UIView+LoadCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C7F72C1DD2181200385B1A /* UIView+LoadCategory.m */; };
@@ -107,6 +109,11 @@
 		84F6BB631DC6EF0A009ED8DF /* EnlargeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnlargeButton.h; sourceTree = "<group>"; };
 		84F6BB641DC6EF0A009ED8DF /* EnlargeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnlargeButton.m; sourceTree = "<group>"; };
 		C965152D1DD638B8004B5F05 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		C977F6DA1DD9FA3300F75B24 /* BN_DataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BN_DataModel.h; sourceTree = "<group>"; };
+		C977F6DB1DD9FEF400F75B24 /* BN_BaseDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BN_BaseDataModel.h; sourceTree = "<group>"; };
+		C977F6DC1DD9FEF400F75B24 /* BN_BaseDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BN_BaseDataModel.m; sourceTree = "<group>"; };
+		C977F6DE1DDA037E00F75B24 /* BN_LoadSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BN_LoadSupport.h; sourceTree = "<group>"; };
+		C977F6DF1DDA037E00F75B24 /* BN_LoadSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BN_LoadSupport.m; sourceTree = "<group>"; };
 		C998BFA71DB3A3E900F46F50 /* BC_ToolRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BC_ToolRequest.h; sourceTree = "<group>"; };
 		C998BFA81DB3A3E900F46F50 /* BC_ToolRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BC_ToolRequest.m; sourceTree = "<group>"; };
 		C9C7F7251DCF88BD00385B1A /* BN_FilterMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BN_FilterMenu.h; sourceTree = "<group>"; };
@@ -268,11 +275,23 @@
 			path = CustomViewExt;
 			sourceTree = "<group>";
 		};
+		C977F6D91DD9F98B00F75B24 /* BN_Interface */ = {
+			isa = PBXGroup;
+			children = (
+				C977F6DA1DD9FA3300F75B24 /* BN_DataModel.h */,
+			);
+			path = BN_Interface;
+			sourceTree = "<group>";
+		};
 		C998BFA61DB3A39800F46F50 /* BC_NetworkRequest */ = {
 			isa = PBXGroup;
 			children = (
 				C998BFA71DB3A3E900F46F50 /* BC_ToolRequest.h */,
 				C998BFA81DB3A3E900F46F50 /* BC_ToolRequest.m */,
+				C977F6DB1DD9FEF400F75B24 /* BN_BaseDataModel.h */,
+				C977F6DC1DD9FEF400F75B24 /* BN_BaseDataModel.m */,
+				C977F6DE1DDA037E00F75B24 /* BN_LoadSupport.h */,
+				C977F6DF1DDA037E00F75B24 /* BN_LoadSupport.m */,
 			);
 			path = BC_NetworkRequest;
 			sourceTree = "<group>";
@@ -357,6 +376,7 @@
 		C9DB04381DB258BD00F1D87A /* CommonFiles_BaseCode */ = {
 			isa = PBXGroup;
 			children = (
+				C977F6D91DD9F98B00F75B24 /* BN_Interface */,
 				C998BFA61DB3A39800F46F50 /* BC_NetworkRequest */,
 				C9DB04391DB258BD00F1D87A /* BC_Database */,
 				C9DB043A1DB258BD00F1D87A /* BC_GlobalCode */,
@@ -635,6 +655,7 @@
 				C9C7F7381DD4B70B00385B1A /* UITableView+TPCategory.m in Sources */,
 				C9C7F7351DD4A2F500385B1A /* demoViewModel.m in Sources */,
 				847635AD1DBCC82300194603 /* UIImage+TPCategory.m in Sources */,
+				C977F6DD1DD9FEF500F75B24 /* BN_BaseDataModel.m in Sources */,
 				C9DB04831DB258BD00F1D87A /* UITableView+FDKeyedHeightCache.m in Sources */,
 				847635A51DBCC82300194603 /* CALayer+TPCategory.m in Sources */,
 				C9DB047D1DB258BD00F1D87A /* Base_BaseViewController.m in Sources */,
@@ -653,6 +674,7 @@
 				847635B41DBCC82300194603 /* UIView+MBIBnspectable.m in Sources */,
 				C998BFA91DB3A3E900F46F50 /* BC_ToolRequest.m in Sources */,
 				C9C7F7271DCF88BD00385B1A /* BN_FilterMenu.m in Sources */,
+				C977F6E01DDA037E00F75B24 /* BN_LoadSupport.m in Sources */,
 				847635A91DBCC82300194603 /* NSDate+TPCategory.m in Sources */,
 				847635B01DBCC82300194603 /* UIResponder+TPCategory.m in Sources */,
 				C9DB04851DB258BD00F1D87A /* UITableView+FDTemplateLayoutCellDebug.m in Sources */,

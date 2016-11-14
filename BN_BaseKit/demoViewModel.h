@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "BC_ToolRequest.h"
 
-@interface Advertisement : NSObject
+@interface Advertisement : BN_BaseDataModel
 
 @property (nonatomic, assign)long advertisementId;//广告主键
 @property (nonatomic, assign)int classes;//广告类型1 外部连接 2 列表 3 详情

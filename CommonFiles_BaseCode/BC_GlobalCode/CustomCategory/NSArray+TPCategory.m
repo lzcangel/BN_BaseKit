@@ -8,28 +8,6 @@
 
 #import "NSArray+TPCategory.h"
 
-@interface BN_ArrayLoadSupport()
-
-@property (nonatomic, copy)BN_dataRefreshRBlock refreshDatablock;
-
-@end
-
-@implementation BN_ArrayLoadSupport
-
-- (void)setLoadEvent:(NetLoadEvent)loadEvent
-{
-    _loadEvent = loadEvent;
-    if (loadEvent == NetLoadSuccessfulEvent && self.refreshDatablock != nil) {
-        self.refreshDatablock();
-    }
-}
-
-- (void)setDataRefreshblock:(BN_dataRefreshRBlock)block
-{
-    self.refreshDatablock = block;
-}
-
-@end
 
 @implementation NSArray (TPCategory)
 
@@ -37,7 +15,7 @@
 {
     self = [self init];
     if (self) {
-        self.loadSupport = [[BN_ArrayLoadSupport alloc]init];
+        self.loadSupport = [[BN_LoadSupport alloc]init];
     }
     return self;
 }
@@ -50,11 +28,11 @@
     objc_setAssociatedObject(self, @selector(networkTotal), value, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (BN_ArrayLoadSupport *)loadSupport {
+- (BN_LoadSupport *)loadSupport {
     return objc_getAssociatedObject(self, @selector(loadSupport));
 }
 
-- (void)setLoadSupport:(BN_ArrayLoadSupport *)value {
+- (void)setLoadSupport:(BN_LoadSupport *)value {
     objc_setAssociatedObject(self, @selector(loadSupport), value, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 

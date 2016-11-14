@@ -40,6 +40,20 @@
     
     //刷新数据
     [self.viewModel getAdvertisementListArrayClearData:YES];
+    
+    [self.viewModel.advertisementArray.loadSupport setDataRefreshblock:^{
+        NSLog(@"数据刷新了");
+    }];
+    
+    [self.tableView loadData:self.viewModel.advertisementArray];
+    
+    
+//    Advertisement *ddd = [[Advertisement alloc]init];
+//    
+//    NSLog(@"ASSRRRR %@",ddd);
+//    Advertisement *sss = [ddd mj_setKeyValues:@{@"picUrl":@"eweww"}];
+//    
+//    NSLog(@"ASSRRRR %@",ddd);
 }
 
 

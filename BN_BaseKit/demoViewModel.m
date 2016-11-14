@@ -13,6 +13,17 @@
 
 @implementation Advertisement
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+    
+    }
+    return self;
+}
+
+
+
 @end
 
 @implementation demoViewModel
@@ -42,7 +53,7 @@
         {
             NSLog(@"成功  %@",[dic objectForKey:@"rows"]);
             NSArray *array = [dic objectForKey:@"rows"];
-            NSArray *returnArray = [Advertisement objectArrayWithKeyValuesArray:array];
+            NSArray *returnArray = [Advertisement mj_objectArrayWithKeyValuesArray:array];
             
             if (clear == YES)
             {
