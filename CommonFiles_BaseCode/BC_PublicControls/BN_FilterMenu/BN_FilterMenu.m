@@ -494,10 +494,14 @@
 - (void)animateTableView {
     
     if (self.showIndex == -1) {
+        
+        UIView *superView = [self resetScrollView:NO];
+        CGRect rect = [self.superview convertRect:self.frame toView:superView];
+        
         [UIView animateWithDuration:0.25 animations:^{
-            self.backView.frame = CGRectMake(self.frame.origin.x,
-                                              self.frame.origin.y + self.frame.size.height,
-                                              self.frame.size.width,
+            self.backView.frame = CGRectMake(rect.origin.x,
+                                              rect.origin.y + rect.size.height,
+                                              rect.size.width,
                                               0);
             self.backGroundView.alpha = 0;
         } completion:^(BOOL finished) {
@@ -506,31 +510,35 @@
         }];
         
     } else {
+        
+        UIView *superView = [self resetScrollView:YES];
+        CGRect rect = [self.superview convertRect:self.frame toView:superView];
+        
         [self.backView removeFromSuperview];
-        self.backView.frame = CGRectMake(self.frame.origin.x,
-                                          self.frame.origin.y + self.frame.size.height,
-                                          self.frame.size.width,
+        self.backView.frame = CGRectMake(rect.origin.x,
+                                          rect.origin.y + rect.size.height,
+                                          rect.size.width,
                                           0);
-        self.backGroundView.frame = CGRectMake(self.frame.origin.x,
-                                               self.frame.origin.y + self.frame.size.height,
-                                               self.frame.size.width,
-                                               self.superview.frame.size.height - self.frame.origin.y - self.frame.size.height);
+        self.backGroundView.frame = CGRectMake(rect.origin.x,
+                                               rect.origin.y + rect.size.height,
+                                               rect.size.width,
+                                               superView.frame.size.height - rect.origin.y - rect.size.height);
 
-        [self.superview addSubview:self.backGroundView];
-        [self.superview addSubview:self.backView];
+        [superView addSubview:self.backGroundView];
+        [superView addSubview:self.backView];
         [self.tableView reloadData];
         
-        CGFloat maxHeight = self.superview.frame.size.height - self.frame.origin.y - self.frame.size.height - 35;
+        CGFloat maxHeight = superView.frame.size.height - rect.origin.y - rect.size.height - 35;
         
         [self.bottomView removeFromSuperview];
         self.bottomView = self.bottomViewBlock == nil ? [[UIView alloc]init] : self.bottomViewBlock(self.showIndex,self.menuArray[self.showIndex])?:[[UIView alloc]init];
         self.tableView.frame = CGRectMake(0,
                                           0,
-                                          self.frame.size.width,
+                                          rect.size.width,
                                           MIN(self.tableView.contentSize.height, maxHeight - self.bottomView.frame.size.height));
         self.bottomView.frame = CGRectMake(0,
                                       self.tableView.frame.size.height,
-                                      self.frame.size.width,
+                                      rect.size.width,
                                       self.bottomView.frame.size.height);
         [self.backView addSubview:self.tableView];
         [self.backView addSubview:self.bottomView];
@@ -539,9 +547,9 @@
         //判断是否有子项目
         if (self.haveSubFilterBlock != nil && self.haveSubFilterBlock(self.showIndex,self.menuArray[self.showIndex]))
         {
-            self.subFilterView.frame = CGRectMake(self.frame.size.width/2.0,
+            self.subFilterView.frame = CGRectMake(rect.size.width/2.0,
                                                   self.heightForSectionBlock(self.showIndex,0,self.dataKeyArray[0]),
-                                                  self.frame.size.width/2.0,
+                                                  rect.size.width/2.0,
                                                   self.tableView.frame.size.height - self.heightForSectionBlock(self.showIndex,0,self.dataKeyArray[0]));
             self.subFilterView.supIndex = 0;
             NSArray *array = [self getRowArrayInSection:0];
@@ -555,9 +563,9 @@
         
         [UIView animateWithDuration:0.25 animations:^{
             
-            self.backView.frame = CGRectMake(self.frame.origin.x,
-                                              self.frame.origin.y + self.frame.size.height,
-                                              self.frame.size.width,
+            self.backView.frame = CGRectMake(rect.origin.x,
+                                              rect.origin.y + rect.size.height,
+                                              rect.size.width,
                                               MIN(self.tableView.contentSize.height + self.bottomView.frame.size.height, maxHeight));
             self.backGroundView.alpha = 0.25;
         } completion:^(BOOL finished) {
@@ -641,6 +649,25 @@
         self.dataDic[self.dataKeyArray[section]] = array;
     }
     return array;
+}
+
+- (UIView *)resetScrollView:(BOOL)open
+{
+    UIView *supScrView = self;
+    while (![supScrView isKindOfClass:[UIScrollView class]] && ![supScrView isKindOfClass:[UIWindow class]]) {
+        supScrView = supScrView.superview;
+    }
+    
+    if ([supScrView isKindOfClass:[UIScrollView class]]) {
+        CGPoint point = [self convertPoint:CGPointMake(0, 0) toView:supScrView.superview];
+        CGFloat offect = point.y - supScrView.frame.origin.y;
+        UIScrollView *scrollView = (UIScrollView *)supScrView;
+        [scrollView setContentOffset:CGPointMake(scrollView.contentOffset.x, scrollView.contentOffset.y + offect) animated:NO];
+        scrollView.scrollEnabled = !open;
+        return scrollView.superview;
+    }
+    return self.superview;
+    
 }
 
 @end
