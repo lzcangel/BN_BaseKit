@@ -16,6 +16,7 @@
     self = [self init];
     if (self) {
         self.loadSupport = [[BN_LoadSupport alloc]init];
+        self.loadSupport.haveData = YES;
     }
     return self;
 }
