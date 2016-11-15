@@ -18,5 +18,9 @@
 
 - (instancetype)initFromNet;
 
+- (NSArray *)map:(id (^) (id element))block；
+
+- (NSArray *)filter:(BOOL (^) (id element))block；
+
 @end
 

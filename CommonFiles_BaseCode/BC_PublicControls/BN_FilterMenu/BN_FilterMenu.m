@@ -523,7 +523,7 @@
         CGFloat maxHeight = self.superview.frame.size.height - self.frame.origin.y - self.frame.size.height - 35;
         
         [self.bottomView removeFromSuperview];
-        self.bottomView = self.bottomViewBlock(self.showIndex,self.menuArray[self.showIndex])?:[[UIView alloc]init];
+        self.bottomView = self.bottomViewBlock == nil ? [[UIView alloc]init] : self.bottomViewBlock(self.showIndex,self.menuArray[self.showIndex])?:[[UIView alloc]init];
         self.tableView.frame = CGRectMake(0,
                                           0,
                                           self.frame.size.width,

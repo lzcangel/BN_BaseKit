@@ -37,4 +37,39 @@
     objc_setAssociatedObject(self, @selector(loadSupport), value, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
+- (NSArray *)map:(id (^) (id element))block
+{
+    if (!block) {
+        NSAssert(NO, @"block is nil");
+        return nil;
+    }
+    
+    NSMutableArray *array = [NSMutableArray arrayWithCapacity:self.count];
+    
+    for (id element in self) {
+        id result = block(element);
+        [array addObject:result ? result : [NSNull null]];
+    }
+    
+    return array;
+}
+
+- (NSArray *)filter:(BOOL (^) (id element))block
+{
+    if (!block) {
+        NSAssert(NO, @"block is nil");
+        return nil;
+    }
+    
+    NSMutableArray *array = [NSMutableArray arrayWithCapacity:self.count];
+    
+    for (id element in self) {
+        if (block(element)) {
+            [array addObject:element];
+        }
+    }
+    
+    return array;
+}
+
 @end
