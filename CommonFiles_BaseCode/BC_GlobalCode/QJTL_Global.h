@@ -35,6 +35,7 @@
 #import "UITextView+Placeholder.h"
 #import "UIView+LoadCategory.h"
 #import "UITableView+TPCategory.h"
+#import "UICollectionView+TPCategory.h"
 #import "BC_ToolRequest.h"
 #import "BN_BaseDataModel.h"
 
