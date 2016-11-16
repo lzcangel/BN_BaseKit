@@ -60,7 +60,7 @@ static const void *footerUtilityKey = &footerUtilityKey;
     self.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         temp.headerRefreshDatablock();
     }];
-
+    
     
 //    self.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
 //        temp.footerRefreshDatablock();
@@ -91,7 +91,7 @@ static const void *footerUtilityKey = &footerUtilityKey;
             else
             {
                 __weak typeof(self) temp = self;
-                self.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+                self.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
                     temp.footerRefreshDatablock();
                 }];
             }

@@ -12,7 +12,7 @@
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "4CBD7E8C-A9B2-4538-A66B-6E115C2D9810",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "c7e35e2a-59cb-4199-89bd-0fe7ff3ab383++505" : "..",
-    "A683D06F42C0E448AAE327040B0DE8A8B6FF6E52" : "BN_BaseKit\/"
+    "A683D06F42C0E448AAE327040B0DE8A8B6FF6E52" : "MTBaseKit\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "BN_BaseKit",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
