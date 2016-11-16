@@ -38,16 +38,14 @@
     //设置绑定数组
     [self.tableView setTableViewData:self.viewModel.advertisementArray];
     
-//    //刷新数据
-//    [self.viewModel getAdvertisementListArrayClearData:YES];
-//    
-//    [self.viewModel.advertisementArray.loadSupport setDataRefreshblock:^{
-//        NSLog(@"数据刷新了");
-//    }];
+    //刷新数据
+    [self.viewModel getAdvertisementListArrayClearData:YES];
     
-//     [self.tableView loadData:self.viewModel.advertisementArray];
-
+    [self.viewModel.advertisementArray.loadSupport setDataRefreshblock:^{
+        NSLog(@"数据刷新了");
+    }];
     
+    [self.tableView loadData:self.viewModel.advertisementArray];
     
     
 //    Advertisement *ddd = [[Advertisement alloc]init];
