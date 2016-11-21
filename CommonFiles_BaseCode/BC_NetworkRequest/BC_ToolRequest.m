@@ -91,34 +91,35 @@ static BC_ToolRequest *toolRequest = nil;
 }
 
 - (void)POST:(NSString *)URLString
- parameters:(id)parameters
-    success:(void (^)(NSURLSessionDataTask *operation, id responseObject))success
-    failure:(void (^)(NSURLSessionDataTask *operation, NSError *error))failure
+  parameters:(id)parameters
+     success:(void (^)(NSURLSessionDataTask *operation, id responseObject))success
+     failure:(void (^)(NSURLSessionDataTask *operation, NSError *error))failure
 {
-    self.requestCount ++;
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html",@"text/json",@"text/javascript", nil];
-//    
-//    [manager POST:URLString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        success(task,responseObject);
-//        self.requestCount --;
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        failure(task,error);
-//        self.requestCount --;
-//    }];
- 
+    NSData *sendData = [NSJSONSerialization dataWithJSONObject:parameters
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:nil];
     
-    [manager POST:URLString parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        ;
-    } progress:^(NSProgress * _Nonnull uploadProgress) {
-        ;
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        success(task,responseObject);
-        self.requestCount --;
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(task,error);
-        self.requestCount --;
-    }];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:URLString parameters:nil error:nil];
+    
+    req.timeoutInterval= [[[NSUserDefaults standardUserDefaults] valueForKey:@"timeoutInterval"] longValue];
+    [req setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [req setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [req setHTTPBody:sendData];
+    
+    self.requestCount ++;
+    [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        
+        if (!error) {
+            success(nil,responseObject);
+            self.requestCount --;
+            NSLog(@"Reply JSON: %@", responseObject);
+        } else {
+            failure(nil,error);
+            self.requestCount --;
+            NSLog(@"Error: %@, %@, %@", error, response, responseObject);
+        }
+    }] resume];
 }
 
 - (void)PUT:(NSString *)URLString
@@ -126,17 +127,31 @@ static BC_ToolRequest *toolRequest = nil;
     success:(void (^)(NSURLSessionDataTask *operation, id responseObject))success
     failure:(void (^)(NSURLSessionDataTask *operation, NSError *error))failure
 {
-    self.requestCount ++;
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html",@"text/json",@"text/javascript", nil];
+    NSData *sendData = [NSJSONSerialization dataWithJSONObject:parameters
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:nil];
     
-    [manager PUT:URLString parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        success(task,responseObject);
-        self.requestCount --;
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failure(task,error);
-        self.requestCount --;
-    }];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:@"PUT" URLString:URLString parameters:nil error:nil];
+    
+    req.timeoutInterval= [[[NSUserDefaults standardUserDefaults] valueForKey:@"timeoutInterval"] longValue];
+    [req setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [req setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [req setHTTPBody:sendData];
+    
+    self.requestCount ++;
+    [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        
+        if (!error) {
+            success(nil,responseObject);
+            self.requestCount --;
+            NSLog(@"Reply JSON: %@", responseObject);
+        } else {
+            failure(nil,error);
+            self.requestCount --;
+            NSLog(@"Error: %@, %@, %@", error, response, responseObject);
+        }
+    }] resume];
 }
 
 - (void)DELETE:(NSString *)URLString
