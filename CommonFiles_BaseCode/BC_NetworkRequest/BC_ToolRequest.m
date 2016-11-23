@@ -80,6 +80,9 @@ static BC_ToolRequest *toolRequest = nil;
     self.requestCount ++;
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html",@"text/json",@"text/javascript", nil];
+    if (self.token && [self.token length]) {
+        [manager.requestSerializer setValue:self.token forHTTPHeaderField:@"Token"];
+    }
     
     [manager GET:URLString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(task,responseObject);
@@ -101,7 +104,9 @@ static BC_ToolRequest *toolRequest = nil;
     
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:URLString parameters:nil error:nil];
-    
+    if (self.token && [self.token length]) {
+        [req setValue:self.token forHTTPHeaderField:@"Token"];
+    }
     req.timeoutInterval= [[[NSUserDefaults standardUserDefaults] valueForKey:@"timeoutInterval"] longValue];
     [req setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [req setValue:@"application/json" forHTTPHeaderField:@"Accept"];
@@ -133,7 +138,9 @@ static BC_ToolRequest *toolRequest = nil;
     
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:@"PUT" URLString:URLString parameters:nil error:nil];
-    
+    if (self.token && [self.token length]) {
+        [req setValue:self.token forHTTPHeaderField:@"Token"];
+    }
     req.timeoutInterval= [[[NSUserDefaults standardUserDefaults] valueForKey:@"timeoutInterval"] longValue];
     [req setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [req setValue:@"application/json" forHTTPHeaderField:@"Accept"];
@@ -162,7 +169,9 @@ static BC_ToolRequest *toolRequest = nil;
     self.requestCount ++;
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html",@"text/json",@"text/javascript", nil];
-    
+    if (self.token && [self.token length]) {
+        [manager.requestSerializer setValue:self.token forHTTPHeaderField:@"Token"];
+    }
     [manager DELETE:URLString parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(task,responseObject);
         self.requestCount --;

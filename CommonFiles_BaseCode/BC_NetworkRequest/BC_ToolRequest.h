@@ -30,6 +30,8 @@ typedef NS_ENUM(NSInteger, NetLoadEvent) {
 
 +(BC_ToolRequest *)sharedManager;
 
+@property(nonatomic, copy) NSString *token;
+
 /**
  网络请求GET
 
