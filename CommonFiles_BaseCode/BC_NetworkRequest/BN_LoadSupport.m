@@ -11,6 +11,7 @@
 @interface BN_LoadSupport()
 
 @property (nonatomic, copy)BN_dataRefreshBlock refreshDatablock;
+@property (nonatomic, copy)BN_dataRefreshFailBlock refreshDataFailBlock;
 
 @end
 
@@ -24,9 +25,23 @@
     }
 }
 
+- (void)setLoadFailEvent:(NetLoadEvent)loadFailEvent
+{
+    if (loadFailEvent == NetLoadFailedEvent) {
+        self.netRemark = @"网络请求失败";
+    }
+    if (self.refreshDataFailBlock) {
+        self.refreshDataFailBlock(loadFailEvent,self.netRemark);
+    }
+}
+
 - (void)setDataRefreshblock:(BN_dataRefreshBlock)block
 {
     self.refreshDatablock = block;
 }
 
+- (void)setDataRefreshFailBlock:(BN_dataRefreshFailBlock)block
+{
+    self.refreshDataFailBlock = block;
+}
 @end
