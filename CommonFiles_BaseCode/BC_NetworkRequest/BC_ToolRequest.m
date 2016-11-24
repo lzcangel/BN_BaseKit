@@ -22,6 +22,7 @@
 
 static BC_ToolRequest *toolRequest = nil;
 
+@synthesize token = _token;
 
 +(BC_ToolRequest *)sharedManager{
     static dispatch_once_t onceToken;
@@ -56,6 +57,23 @@ static BC_ToolRequest *toolRequest = nil;
     }];
     
     return self;
+}
+
+- (void)setToken:(NSString *)token
+{
+    _token = token;
+    if (_token && [_token length]) {
+        [[NSUserDefaults standardUserDefaults] setObject:_token forKey:@"LocalToken"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+}
+
+- (NSString*)token
+{
+    if (!_token) {
+        _token = [[NSUserDefaults standardUserDefaults] objectForKey:@"LocalToken"];
+    }
+    return _token;
 }
 
 +(id)allocWithZone:(NSZone *)zone
