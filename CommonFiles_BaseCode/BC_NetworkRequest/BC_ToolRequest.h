@@ -83,9 +83,8 @@ typedef NS_ENUM(NSInteger, NetLoadEvent) {
  *  上传文件并获取地址
  *
  *  @param dataList  文件列表
- *  @param nameList  文件名，可为空
  *  @param dataBlock 结果回调
  */
-- (void)uploadfile:(NSArray *)dataList fileName:(NSArray *)nameList block:(void (^)(NSArray *files, NSError *error))dataBlock;
+- (void)uploadfile:(NSArray *)dataList block:(void (^)(NSArray *files, NSError *error))dataBlock;
 
 @end

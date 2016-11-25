@@ -8,6 +8,9 @@
 
 #import "BC_ToolRequest.h"
 #import "QJTL_Global.h"
+#import <QiniuSDK.h>
+
+#define BN_BASEURL @"http://112.74.31.159:26088/lbb-app"
 
 @interface BC_ToolRequest ()<MBProgressHUDDelegate>
 {
@@ -200,61 +203,67 @@ static BC_ToolRequest *toolRequest = nil;
 }
 
 
-- (void)uploadfile:(NSArray *)dataList fileName:(NSArray *)nameList block:(void (^)(NSArray *files, NSError *error))dataBlock
+- (void)uploadfile:(NSArray *)dataList block:(void (^)(NSArray *files, NSError *error))dataBlock
 {
     if(dataList == nil || dataList.count == 0)
     {
         dataBlock([[NSArray alloc]init],nil);
         return;
     }
-    _upLoadProgress = 0.f;
+
+    __block NSArray *updataList = [dataList map:^id(UIImage *element) {
+        return UIImageJPEGRepresentation(element, 0.8);
+    }];
     
-    NSDictionary *paraDic = @{
-                              };
-    AFHTTPSessionManager *operationManager = [AFHTTPSessionManager manager];
-    operationManager.requestSerializer.timeoutInterval = 20;
+    NSString *url = [NSString stringWithFormat:@"%@/homePage/qiniu/token",BN_BASEURL];
+    __block NSInteger index = 0;
+    __block NSMutableArray *returnArray = [@[] mutableCopy];
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         [self showWIthLabelAnnularDeterminate];
     });
-    __weak NSArray *block_dataList = dataList;
-    __weak NSArray *block_nameList = nameList;
-    [operationManager POST:[NSString stringWithFormat:@"%@/upload/save",@""] parameters:paraDic constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        NSError *error;
-        
-        for(int i = 0;i<block_dataList.count;i++)
-        {
-            NSData *data = block_dataList[i];
-            NSString *name = block_nameList == nil ? @"photo.jpg":block_nameList[i];
-            [formData appendPartWithFileData:data name:name fileName:name mimeType:@"binary/octet-stream"];
-        }
-        
-        NSLog(@"error:%@",error);
-    } progress:^(NSProgress * _Nonnull uploadProgress) {
-        _upLoadProgress = uploadProgress.fractionCompleted;
-        ;
-    } success:^(NSURLSessionDataTask *operation, id responseObject) {
-        _upLoadProgress = 2.0;
+    
+    [[BC_ToolRequest sharedManager] GET:url parameters:nil success:^(NSURLSessionDataTask *operation, id responseObject) {
         NSDictionary *dic = responseObject;
-        NSLog(@"<<<%@>>>",dic);
         NSNumber *codeNumber = [dic objectForKey:@"code"];
         if(codeNumber.intValue == 0)
         {
-            NSDictionary *dataDic = [dic objectForKey:@"result"];
-            NSString *str = [dataDic objectForKey:@"files"];
-            NSArray *arr = [str componentsSeparatedByString:NSLocalizedString(@";", nil)];
-            dataBlock(arr,nil);
+            NSString *token = [[dic objectForKey:@"result"] objectForKey:@"qiniuToken"];
+            
+            for (NSData *data in updataList)
+            {
+                QNUploadManager *upManager = [[QNUploadManager alloc] init];
+                int x = arc4random() % 10000;
+                NSString *key = [NSString stringWithFormat:@"%fU%d",[[NSDate date] timeIntervalSince1970],x];
+                key = [key stringByReplacingOccurrencesOfString:@"." withString:@""];
+                
+                [upManager putData:data key:key token:token
+                          complete: ^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
+                              NSLog(@"%@", info);
+                              NSLog(@"%@", resp);
+                              [returnArray addObject:key];
+                              index++;
+                          } option:nil];
+            }
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                while (index != updataList.count)
+                {
+                    _upLoadProgress = (index*1.0/updataList.count);
+                    usleep(100);
+                }
+                _upLoadProgress = 2.0;
+                dataBlock(returnArray,nil);
+            });
         }
         else
         {
             NSString *errorStr = [dic objectForKey:@"remark"];
-            [BC_ToolRequest showErrorCode:errorStr code:codeNumber.intValue];
+            NSLog(@"失败  %@",errorStr);
+            dataBlock(nil,[NSError errorWithDomain:errorStr code:codeNumber.integerValue userInfo:@{@"remark":errorStr}]);
         }
-        NSLog(@"success:%@",dic);
     } failure:^(NSURLSessionDataTask *operation, NSError *error) {
-        NSLog(@"上传失败%@",error.localizedDescription);
-        NSLog(@"%@",error);
-        [BC_ToolRequest showErrorCode:[NSString stringWithFormat:@"%@",error.localizedDescription] code:(int)error.code];
-        _upLoadProgress = 2.0;
+        dataBlock(nil,error);
     }];
 }
 
@@ -266,6 +275,7 @@ static BC_ToolRequest *toolRequest = nil;
     downloadHUD.mode = MBProgressHUDModeAnnularDeterminate;
     downloadHUD.delegate = self;
     downloadHUD.label.text = @"Loading";
+    [downloadHUD showAnimated:YES];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         _upLoadProgress = 0;
@@ -283,7 +293,7 @@ static BC_ToolRequest *toolRequest = nil;
             [self refreshProgressTask];
         });
     } else {
-//        [downloadHUD hideAnimated:YES];
+        [downloadHUD hideAnimated:YES];
     }
 }
 

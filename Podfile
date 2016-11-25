@@ -13,5 +13,6 @@ pod "IQKeyboardManager"
 pod 'ASIHTTPRequest'
 pod 'MJRefresh'
 pod 'MJExtension'
+pod "Qiniu", "~> 7.1"
 
 end
