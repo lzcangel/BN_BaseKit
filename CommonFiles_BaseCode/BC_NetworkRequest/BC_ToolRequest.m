@@ -10,8 +10,6 @@
 #import "QJTL_Global.h"
 #import <QiniuSDK.h>
 
-#define BN_BASEURL @"http://112.74.31.159:26088/lbb-app"
-
 @interface BC_ToolRequest ()<MBProgressHUDDelegate>
 {
     MBProgressHUD *hud;
