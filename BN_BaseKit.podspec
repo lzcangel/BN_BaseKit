@@ -27,4 +27,5 @@ Pod::Spec.new do |s|
 	s.dependency 'Reachability'
 	s.dependency 'MJExtension'
 	s.dependency "Qiniu", "~> 7.1"
+	s.dependency "FMDB"
 end

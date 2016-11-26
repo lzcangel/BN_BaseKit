@@ -26,4 +26,5 @@ typedef void (^UINetBlock)();
 
 - (void)setRefreshBlock:(UINetBlock)block;
 
+
 @end

@@ -117,9 +117,12 @@ static BC_ToolRequest *toolRequest = nil;
      success:(void (^)(NSURLSessionDataTask *operation, id responseObject))success
      failure:(void (^)(NSURLSessionDataTask *operation, NSError *error))failure
 {
-    NSData *sendData = [NSJSONSerialization dataWithJSONObject:parameters
-                                                       options:NSJSONWritingPrettyPrinted
-                                                         error:nil];
+    NSData *sendData = nil;
+    if (parameters) {
+        sendData = [NSJSONSerialization dataWithJSONObject:parameters
+                                        options:NSJSONWritingPrettyPrinted
+                                                     error:nil];
+    }
     
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:URLString parameters:nil error:nil];

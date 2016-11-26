@@ -14,5 +14,6 @@ pod 'ASIHTTPRequest'
 pod 'MJRefresh'
 pod 'MJExtension'
 pod "Qiniu", "~> 7.1"
+pod "FMDB"
 
 end

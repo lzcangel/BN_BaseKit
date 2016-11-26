@@ -15,6 +15,9 @@
 
 static const void *UtilityKey = &UtilityKey;
 
+UINetBlock netTokenExpiredBlock;
+UINetBlock netTokenExpiredBlock;
+
 @implementation UIView (LoadCategory)
 
 - (UIButton *)netLoadView {

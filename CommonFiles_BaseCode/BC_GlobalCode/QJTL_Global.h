@@ -10,6 +10,7 @@
 #define QJTLBaseFramework_QJTL_Global_h
 
 #import"Base_Common.h"
+#import "BN_DataManagement.h"
 #import"Base_BaseViewController.h"
 #import"Base_ControlsFactory.h"
 #import "UITableView+FDTemplateLayoutCell.h"
