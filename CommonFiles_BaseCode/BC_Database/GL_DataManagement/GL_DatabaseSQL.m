@@ -9,6 +9,7 @@
 #import "GL_DatabaseSQL.h"
 #import "FMDatabase.h"
 #import "FMDatabaseQueue.h"
+#import <objc/runtime.h>
 
 @interface GL_DatabaseSQL ()
 {
