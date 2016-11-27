@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
 	s.homepage = 'https://github.com/lzcangel/BN_BaseKit'
 	s.source = { :git => 'https://github.com/lzcangel/BN_BaseKit.git', :branch => s.version, :submodules => true}
 	s.license = 'MIT'
-	s.resources = 'CommonFiles_BaseCode/**/*.{json,png,jpg,gif,js,xib}'
+	s.resources = 'CommonFiles_BaseCode/**/*.{json,png,jpg,gif,js,xib,db}'
 	s.authors  = { 'lzcangel' => '592097271@qq.com' }
 
 	s.dependency 'AFNetworking'
