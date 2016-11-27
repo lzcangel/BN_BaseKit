@@ -8,6 +8,7 @@
 
 #import "SJR_AreaRequest.h"
 #import "BN_DataManagement.h"
+#import "BC_ToolRequest.h"
 
 @implementation SJR_AreaRequest
 

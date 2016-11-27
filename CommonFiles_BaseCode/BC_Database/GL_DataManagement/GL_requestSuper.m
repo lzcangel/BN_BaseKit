@@ -10,6 +10,8 @@
 #import "GL_DatabaseSuper.h"
 #import "Base_Common.h"
 #import "BC_ToolRequest.h"
+#import <objc/runtime.h>
+#import <MJExtension/MJExtension.h>
 
 @interface GL_requestSuper()
 {
@@ -135,7 +137,7 @@
 
 - (void)internetRequest:(void (^)(NSError *error,NSArray *data))internetDataBlock
 {
-    NSDictionary *dic = [self keyValues];
+    NSDictionary *dic = [self mj_keyValues];
     NSLog(@"网络请求为%@",dic);
     
     [[BC_ToolRequest sharedManager] GET:[self url] parameters:dic success:^(NSURLSessionDataTask *operation, id responseObject) {
@@ -234,14 +236,14 @@
 {
     
     NSMutableArray *dataReturn = [[NSMutableArray alloc]init];
-    NSDictionary *requestDic = [self keyValues];
+    NSDictionary *requestDic = [self mj_keyValues];
     for(NSDictionary *dataDic in array)
     {
         NSMutableDictionary *returnDic = [[NSMutableDictionary alloc]init];
         [returnDic setValuesForKeysWithDictionary:dataDic];
         [returnDic setValuesForKeysWithDictionary:requestDic];
 
-        GL_returnSuper *data = [GL_dataClass objectWithKeyValues:returnDic];
+        GL_returnSuper *data = [GL_dataClass mj_objectWithKeyValues:returnDic];
         [dataReturn addObject:data];
     }
     return dataReturn;
@@ -283,7 +285,7 @@
 //结果实例将自身插入数据库
 - (BOOL)insertDatabaseIntoTable
 {
-    NSDictionary *data = [self keyValues];
+    NSDictionary *data = [self mj_keyValues];
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         if([self.class DBName] == nil)
         {
@@ -299,7 +301,7 @@
 
 - (BOOL)updateDatabaseIntoTable
 {
-    NSDictionary *data = [self keyValues];
+    NSDictionary *data = [self mj_keyValues];
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         if([self.class DBName] == nil)
