@@ -213,6 +213,7 @@ static BC_ToolRequest *toolRequest = nil;
     }
 
     __block NSArray *updataList = [dataList map:^id(UIImage *element) {
+        if ([element isKindOfClass:[NSData class]])return element;
         return UIImageJPEGRepresentation(element, 0.8);
     }];
     
