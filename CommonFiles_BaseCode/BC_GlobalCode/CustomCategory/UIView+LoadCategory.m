@@ -20,6 +20,12 @@ UINetBlock netTokenExpiredBlock;
 
 @implementation UIView (LoadCategory)
 
+UINetBlock bn_loginBlock;
+
++ (void)setLoginBlock:(UINetBlock)block {
+    bn_loginBlock = block;
+}
+
 - (UIButton *)netLoadView {
     return objc_getAssociatedObject(self, @selector(netLoadView));
 }
@@ -269,6 +275,9 @@ UINetBlock netTokenExpiredBlock;
             break;
         case NetTokenExpiredEvent://用户token无效
         {
+            if (bn_loginBlock != nil) {
+                bn_loginBlock();
+            }
 //            [SJR_UserInfo sharedUserInfo].isLoginView = YES;
 //            SJR_LoginViewController *loginViewController = [[SJR_LoginViewController alloc]init];
 //            UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:loginViewController];

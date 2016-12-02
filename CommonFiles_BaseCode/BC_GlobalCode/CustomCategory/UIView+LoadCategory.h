@@ -26,5 +26,6 @@ typedef void (^UINetBlock)();
 
 - (void)setRefreshBlock:(UINetBlock)block;
 
++ (void)setLoginBlock:(UINetBlock)block;
 
 @end

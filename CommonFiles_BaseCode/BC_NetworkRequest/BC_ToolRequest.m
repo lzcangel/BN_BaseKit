@@ -42,6 +42,10 @@ static BC_ToolRequest *toolRequest = nil;
     hud.label.text = @"加载中，请稍后...";
     self.requestCount = 0;
     
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[UIApplication sharedApplication].keyWindow addSubview:hud];
+    });
+    
     [RACObserve(self, requestCount) subscribeNext:^(NSNumber *value) {
         if (value.integerValue <= 0)
         {
