@@ -12,10 +12,10 @@ Pod::Spec.new do |s|
 	s.source = { :git => 'https://github.com/lzcangel/BN_BaseKit.git', :branch => s.version, :submodules => true}
 	s.license = 'MIT'
 	s.resources = 'CommonFiles_BaseCode/**/*.{json,png,jpg,gif,js,xib,db}'
+	s.weak_frameworks = 'CoreTelephony','SystemConfiguration','Security'
+	s.libraries = 'libc++','libsqlite3.0','libz'
 	s.vendored_frameworks = 'CommonFiles_BaseCode/**/*.framework'
 	s.vendored_libraries = 'CommonFiles_BaseCode/**/*.a'
-	s.weak_frameworks = 'CoreTelephony', 'SystemConfiguration','Security'
-	s.libraries = 'libc++','libsqlite3.0','libz'
 	s.authors  = { 'lzcangel' => '592097271@qq.com' }
 
 	s.dependency 'AFNetworking'
