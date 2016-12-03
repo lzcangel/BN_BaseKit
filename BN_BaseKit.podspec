@@ -7,11 +7,11 @@ Pod::Spec.new do |s|
 	s.summary = 'BN_BaseKit code'
 	s.requires_arc = true
 	s.ios.deployment_target = '8.0'
-	s.source_files = 'CommonFiles_BaseCode/**/*.{h,m}'
+	s.source_files = 'CommonFiles_BaseCode/**/*.{h,m,a}'
 	s.homepage = 'https://github.com/lzcangel/BN_BaseKit'
 	s.source = { :git => 'https://github.com/lzcangel/BN_BaseKit.git', :branch => s.version, :submodules => true}
 	s.license = 'MIT'
-	s.resources = 'CommonFiles_BaseCode/**/*.{json,png,jpg,gif,js,xib,db,a}'
+	s.resources = 'CommonFiles_BaseCode/**/*.{json,png,jpg,gif,js,xib,db}'
 	s.authors  = { 'lzcangel' => '592097271@qq.com' }
 
 	s.dependency 'AFNetworking'
