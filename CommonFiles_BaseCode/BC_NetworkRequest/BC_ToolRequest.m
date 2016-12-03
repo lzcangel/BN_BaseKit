@@ -70,6 +70,9 @@ static BC_ToolRequest *toolRequest = nil;
     if (_token && [_token length]) {
         [[NSUserDefaults standardUserDefaults] setObject:_token forKey:@"LocalToken"];
         [[NSUserDefaults standardUserDefaults] synchronize];
+    }else {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LocalToken"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }
 }
 
