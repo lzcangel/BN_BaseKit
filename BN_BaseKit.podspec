@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
 	s.license = 'MIT'
 	s.resources = 'CommonFiles_BaseCode/**/*.{json,png,jpg,gif,js,xib,db}'
 	s.weak_frameworks = 'CoreTelephony','SystemConfiguration','Security'
-	s.libraries = 'libc++','libsqlite3.0','libz'
+	s.libraries = 'c++','sqlite3.0','z'
 	s.vendored_frameworks = 'CommonFiles_BaseCode/**/*.framework'
 	s.vendored_libraries = 'CommonFiles_BaseCode/**/*.a'
 	s.authors  = { 'lzcangel' => '592097271@qq.com' }
