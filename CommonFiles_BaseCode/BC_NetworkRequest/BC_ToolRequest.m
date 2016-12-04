@@ -105,7 +105,7 @@ static BC_ToolRequest *toolRequest = nil;
 {
     self.requestCount ++;
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html",@"text/json",@"text/javascript", nil];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html",@"text/json",@"text/javascript",@"text/plain", nil];
     if (self.token && [self.token length]) {
         [manager.requestSerializer setValue:self.token forHTTPHeaderField:@"Token"];
     }
@@ -197,7 +197,7 @@ static BC_ToolRequest *toolRequest = nil;
 {
     self.requestCount ++;
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html",@"text/json",@"text/javascript", nil];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html",@"text/json",@"text/javascript",@"text/plain", nil];
     if (self.token && [self.token length]) {
         [manager.requestSerializer setValue:self.token forHTTPHeaderField:@"Token"];
     }
