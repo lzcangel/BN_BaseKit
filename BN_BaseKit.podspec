@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
 	s.homepage = 'https://github.com/lzcangel/BN_BaseKit'
 	s.source = { :git => 'https://github.com/lzcangel/BN_BaseKit.git', :branch => s.version, :submodules => true}
 	s.license = 'MIT'
-	s.resources = 'CommonFiles_BaseCode/**/*.{json,png,jpg,gif,js,xib,db}'
+	s.resources = 'CommonFiles_BaseCode/**/*.{json,png,jpg,gif,js,xib,db,xcassets}'
 	s.weak_frameworks = 'CoreTelephony','SystemConfiguration','Security'
 	s.libraries = 'c++','sqlite3.0','z'
 	s.vendored_frameworks = 'CommonFiles_BaseCode/**/*.framework'
