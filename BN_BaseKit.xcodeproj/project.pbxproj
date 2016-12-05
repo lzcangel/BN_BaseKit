@@ -57,6 +57,7 @@
 		1B09D2521DE9DD900060F57D /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B09D2511DE9DD900060F57D /* libz.tbd */; };
 		1B09D2541DE9DD9D0060F57D /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B09D2531DE9DD9D0060F57D /* libsqlite3.0.tbd */; };
 		1B09D2561DE9DDD40060F57D /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B09D2551DE9DDD40060F57D /* libc++.tbd */; };
+		1B20854E1DF5C5710065DE6F /* BN_MapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B20854D1DF5C5710065DE6F /* BN_MapView.m */; };
 		1B6DD9E21DF2D9F50041BDB7 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B09D24B1DE9DD090060F57D /* CoreTelephony.framework */; };
 		1B6DD9E71DF2FC9E0041BDB7 /* BC_Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B6DD9E61DF2FC9E0041BDB7 /* BC_Image.xcassets */; };
 		23E6097BBE9F87868EA719F1 /* libPods-BN_BaseKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E73F5CEABF62746C7D78FB1D /* libPods-BN_BaseKit.a */; };
@@ -187,6 +188,8 @@
 		1B09D2511DE9DD900060F57D /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		1B09D2531DE9DD9D0060F57D /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		1B09D2551DE9DDD40060F57D /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		1B20854C1DF5C5710065DE6F /* BN_MapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BN_MapView.h; sourceTree = "<group>"; };
+		1B20854D1DF5C5710065DE6F /* BN_MapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BN_MapView.m; sourceTree = "<group>"; };
 		1B6DD9E61DF2FC9E0041BDB7 /* BC_Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = BC_Image.xcassets; sourceTree = "<group>"; };
 		C965152D1DD638B8004B5F05 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		C9C7F7331DD4A2F500385B1A /* demoViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = demoViewModel.h; sourceTree = "<group>"; };
@@ -425,6 +428,8 @@
 			children = (
 				1B09D2091DE9DC8F0060F57D /* BN_FilterMenu */,
 				1B09D20C1DE9DC8F0060F57D /* FDTemplateLayoutCell */,
+				1B20854C1DF5C5710065DE6F /* BN_MapView.h */,
+				1B20854D1DF5C5710065DE6F /* BN_MapView.m */,
 			);
 			path = BC_PublicControls;
 			sourceTree = "<group>";
@@ -778,6 +783,7 @@
 				1B09D2441DE9DC8F0060F57D /* BN_FilterMenu.m in Sources */,
 				1B09D2471DE9DC8F0060F57D /* UITableView+FDTemplateLayoutCell.m in Sources */,
 				1B09D2321DE9DC8F0060F57D /* UITableView+TPCategory.m in Sources */,
+				1B20854E1DF5C5710065DE6F /* BN_MapView.m in Sources */,
 				C9DB040D1DB2586100F1D87A /* ViewController.m in Sources */,
 				C9C7F7351DD4A2F500385B1A /* demoViewModel.m in Sources */,
 				1B09D2311DE9DC8F0060F57D /* UIResponder+TPCategory.m in Sources */,
