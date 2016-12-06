@@ -14,8 +14,6 @@
 
 - (void)removeAllAnnotation;
 
-- (void)setDelta:(CGFloat)Delta;
-
 - (void)setDelta:(CGFloat)Delta Latitude:(CGFloat)latitude longitude:(CGFloat)longitude;
 
 @end

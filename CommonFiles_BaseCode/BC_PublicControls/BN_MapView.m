@@ -32,6 +32,14 @@
     return self;
 }
 
+- (void)layoutIfNeeded
+{
+    [super layoutIfNeeded];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        mapView.frame =self.bounds;
+    });
+}
+
 - (void)setFrame:(CGRect)frame
 {
     [super setFrame:frame];
