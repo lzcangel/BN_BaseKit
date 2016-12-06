@@ -10,6 +10,12 @@
 
 @interface BN_MapView : UIView
 
-- (void)setLatitude:(CGFloat)latitude longitude:(CGFloat)longitude;
+- (void)andAnnotationLatitude:(CGFloat)latitude longitude:(CGFloat)longitude;
+
+- (void)removeAllAnnotation;
+
+- (void)setDelta:(CGFloat)Delta;
+
+- (void)setDelta:(CGFloat)Delta Latitude:(CGFloat)latitude longitude:(CGFloat)longitude;
 
 @end

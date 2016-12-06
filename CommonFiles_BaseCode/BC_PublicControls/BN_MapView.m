@@ -13,8 +13,6 @@
 @interface BN_MapView()<MKMapViewDelegate,CLLocationManagerDelegate>
 {
     MKMapView *mapView;
-    CLLocationCoordinate2D theCoordinate;
-    MKPointAnnotation *pinAnnotation;
 }
 @end
 
@@ -40,25 +38,40 @@
     mapView.frame =self.bounds;
 }
 
-- (void)setLatitude:(CGFloat)latitude longitude:(CGFloat)longitude {
+- (void)andAnnotationLatitude:(CGFloat)latitude longitude:(CGFloat)longitude {
     
-    [mapView removeAnnotation:pinAnnotation];
+    CLLocationCoordinate2D theCoordinate;
+    //位置更新后的经纬度
+    theCoordinate.latitude = latitude;
+    theCoordinate.longitude = longitude;
+    
+    MKPointAnnotation *pinAnnotation = [[MKPointAnnotation alloc] init];
+    pinAnnotation.coordinate = theCoordinate;
+    [mapView addAnnotation:pinAnnotation];
+}
+
+- (void)setDelta:(CGFloat)Delta Latitude:(CGFloat)latitude longitude:(CGFloat)longitude
+{
+    CLLocationCoordinate2D theCoordinate;
     //位置更新后的经纬度
     theCoordinate.latitude = latitude;
     theCoordinate.longitude = longitude;
     
     MKCoordinateSpan theSpan;
-    theSpan.latitudeDelta=0.01;
-    theSpan.longitudeDelta=0.01;
+    theSpan.latitudeDelta=Delta;
+    theSpan.longitudeDelta=Delta;
     //设置地图显示的中心及范围
     MKCoordinateRegion theRegion;
     theRegion.center=theCoordinate;
     theRegion.span=theSpan;
     [mapView setRegion:theRegion];
-    
-    pinAnnotation = [[MKPointAnnotation alloc] init];
-    pinAnnotation.coordinate = theCoordinate;
-    [mapView addAnnotation:pinAnnotation];
+}
+
+- (void)removeAllAnnotation
+{
+    [mapView.annotations enumerateObjectsUsingBlock:^(id<MKAnnotation>  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [mapView removeAnnotation:obj];
+    }];
 }
 
 /*
