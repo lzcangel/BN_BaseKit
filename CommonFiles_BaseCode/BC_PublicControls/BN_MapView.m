@@ -32,6 +32,13 @@
     return self;
 }
 
+-(void)layoutSubviews {
+    [super layoutSubviews];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        mapView.frame =self.bounds;
+    });
+}
+
 - (void)layoutIfNeeded
 {
     [super layoutIfNeeded];
