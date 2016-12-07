@@ -111,9 +111,16 @@ static BC_ToolRequest *toolRequest = nil;
     }
     
     [manager GET:URLString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary *dic = responseObject;
+        NSNumber *codeNumber = [dic objectForKey:@"code"];
+        NSString *errorStr = [dic objectForKey:@"remark"];
+        if(codeNumber.intValue != 0) {
+            [self.class showErrorCode:errorStr code:codeNumber.intValue];
+        }
         success(task,responseObject);
         self.requestCount --;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [self.class showErrorCode:[NSString stringWithFormat:@"%@",error.localizedDescription] code:(int)error.code];
         failure(task,error);
         self.requestCount --;
     }];
@@ -145,10 +152,17 @@ static BC_ToolRequest *toolRequest = nil;
     [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         
         if (!error) {
+            NSDictionary *dic = responseObject;
+            NSNumber *codeNumber = [dic objectForKey:@"code"];
+            NSString *errorStr = [dic objectForKey:@"remark"];
+            if(codeNumber.intValue != 0) {
+                [self.class showErrorCode:errorStr code:codeNumber.intValue];
+            }
             success(nil,responseObject);
             self.requestCount --;
             NSLog(@"Reply JSON: %@", responseObject);
         } else {
+            [self.class showErrorCode:[NSString stringWithFormat:@"%@",error.localizedDescription] code:(int)error.code];
             failure(nil,error);
             self.requestCount --;
             NSLog(@"Error: %@, %@, %@", error, response, responseObject);
@@ -179,10 +193,17 @@ static BC_ToolRequest *toolRequest = nil;
     [[manager dataTaskWithRequest:req completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         
         if (!error) {
+            NSDictionary *dic = responseObject;
+            NSNumber *codeNumber = [dic objectForKey:@"code"];
+            NSString *errorStr = [dic objectForKey:@"remark"];
+            if(codeNumber.intValue != 0) {
+                [self.class showErrorCode:errorStr code:codeNumber.intValue];
+            }
             success(nil,responseObject);
             self.requestCount --;
             NSLog(@"Reply JSON: %@", responseObject);
         } else {
+            [self.class showErrorCode:[NSString stringWithFormat:@"%@",error.localizedDescription] code:(int)error.code];
             failure(nil,error);
             self.requestCount --;
             NSLog(@"Error: %@, %@, %@", error, response, responseObject);
@@ -202,9 +223,16 @@ static BC_ToolRequest *toolRequest = nil;
         [manager.requestSerializer setValue:self.token forHTTPHeaderField:@"Token"];
     }
     [manager DELETE:URLString parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary *dic = responseObject;
+        NSNumber *codeNumber = [dic objectForKey:@"code"];
+        NSString *errorStr = [dic objectForKey:@"remark"];
+        if(codeNumber.intValue != 0) {
+            [self.class showErrorCode:errorStr code:codeNumber.intValue];
+        }
         success(task,responseObject);
         self.requestCount --;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [self.class showErrorCode:error.description code:(int)error.code];
         failure(task,error);
         self.requestCount --;
     }];
@@ -306,9 +334,25 @@ static BC_ToolRequest *toolRequest = nil;
     }
 }
 
+NSString *QJTL_ToolRequestErrorStr;
 +(void)showErrorCode:(NSString *)str code:(int)code
 {
-    
+    if([str isEqual:[NSNull null]])str = @"未知错误";
+    if(QJTL_ToolRequestErrorStr == nil || ![QJTL_ToolRequestErrorStr isEqualToString:str])
+    {
+        QJTL_ToolRequestErrorStr = str;
+        MBProgressHUD *hud = [[MBProgressHUD alloc]initWithView:[UIApplication sharedApplication].keyWindow];
+        [[UIApplication sharedApplication].keyWindow addSubview:hud];
+        hud.mode = MBProgressHUDModeText;
+        hud.detailsLabel.font = [UIFont systemFontOfSize:16];
+        hud.detailsLabel.text = QJTL_ToolRequestErrorStr;
+        hud.userInteractionEnabled = NO;
+        [hud showAnimated:YES];
+        [hud hideAnimated:YES afterDelay:1.5];
+    }
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        QJTL_ToolRequestErrorStr = nil;
+    });
 }
 
 @end
