@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <AFNetworking/AFNetworking.h>
 
-#define BN_BASEURL @"http://139.224.18.14:6082/api"
+#define BN_BASEURL @"http://112.74.31.159:26088/lbb-app"
+#define BASEURL @"http://112.74.31.159:26088/lbb-app"
+#define Shop_BASEURL @"http://112.74.31.159:26088/lbb-app"
 
 //刷新所有存活界面通知
 #define BN_RefreshAllView @"BN_UDJRAVi_JMX546"
