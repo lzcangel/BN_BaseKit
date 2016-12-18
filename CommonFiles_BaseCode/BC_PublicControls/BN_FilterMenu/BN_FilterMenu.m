@@ -297,7 +297,8 @@
     [self.tempArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSDictionary *dic = obj;
         CAShapeLayer *shapeLayer = dic[@"sharpLayer"];
-        [self animateIndicator:shapeLayer reverse:0];
+        CATextLayer *titleLayer = dic[@"titleLayer"];
+        [self animateIndicator:shapeLayer titleLayer:titleLayer reverse:0];
     }];
     [self animateTableView];
 }
@@ -307,7 +308,8 @@
     [self.tempArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSDictionary *dic = obj;
         CAShapeLayer *shapeLayer = dic[@"sharpLayer"];
-        [self animateIndicator:shapeLayer reverse:0];
+        CATextLayer *titleLayer = dic[@"titleLayer"];
+        [self animateIndicator:shapeLayer titleLayer:titleLayer reverse:0];
     }];
     [self animateTableView];
 }
@@ -335,7 +337,8 @@
     [self.tempArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSDictionary *dic = obj;
         CAShapeLayer *shapeLayer = dic[@"sharpLayer"];
-        [self animateIndicator:shapeLayer reverse:idx == self.showIndex];
+        CATextLayer *titleLayer = dic[@"titleLayer"];
+        [self animateIndicator:shapeLayer titleLayer:titleLayer reverse:idx == self.showIndex];
     }];
     [self animateTableView];
 }
@@ -468,7 +471,7 @@
 }
 
 #pragma mark - 动画
-- (void)animateIndicator:(CAShapeLayer *)indicator reverse:(BOOL)reverse {
+- (void)animateIndicator:(CAShapeLayer *)indicator titleLayer:(CATextLayer *)titleLayer reverse:(BOOL)reverse {
     [CATransaction begin];
     [CATransaction setAnimationDuration:0.25];
     [CATransaction setAnimationTimingFunction:[CAMediaTimingFunction functionWithControlPoints:0.4 :0.0 :0.2 :1.0]];
@@ -485,9 +488,11 @@
     
     [CATransaction commit];
     if (reverse) {
-        indicator.fillColor = self.selectedTextColor.CGColor;
+        titleLayer.foregroundColor = self.selectedTextColor.CGColor;
+        indicator.strokeColor = self.selectedTextColor.CGColor;
     }else {
-        indicator.fillColor = self.textColor.CGColor;
+        titleLayer.foregroundColor = self.textColor.CGColor;
+        indicator.strokeColor = self.textColor.CGColor;
     }
 }
 
