@@ -255,6 +255,7 @@ static BC_ToolRequest *toolRequest = nil;
     NSString *url = [NSString stringWithFormat:@"%@/homePage/qiniu/token",BN_BASEURL];
     __block NSInteger index = 0;
     __block NSMutableArray *returnArray = [@[] mutableCopy];
+    __block NSMutableArray *returnArray2 = [@[] mutableCopy];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [self showWIthLabelAnnularDeterminate];
@@ -266,13 +267,28 @@ static BC_ToolRequest *toolRequest = nil;
         if(codeNumber.intValue == 0)
         {
             NSString *token = [[dic objectForKey:@"result"] objectForKey:@"qiniuToken"];
-            
-            for (NSData *data in updataList)
-            {
+
+//            for (NSData *data in updataList)
+//            {
+//                QNUploadManager *upManager = [[QNUploadManager alloc] init];
+//                int x = arc4random() % 10000;
+//                NSString *key = [NSString stringWithFormat:@"%fU%d",[[NSDate date] timeIntervalSince1970],x];
+//                key = [key stringByReplacingOccurrencesOfString:@"." withString:@""];
+//                
+//                [upManager putData:data key:key token:token
+//                          complete: ^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
+//                              NSLog(@"%@", info);
+//                              NSLog(@"%@", resp);
+//                              [returnArray addObject:key];
+//                              index++;
+//                          } option:nil];
+//            }
+            [updataList enumerateObjectsUsingBlock:^(NSData*  _Nonnull data, NSUInteger idx, BOOL * _Nonnull stop) {
                 QNUploadManager *upManager = [[QNUploadManager alloc] init];
                 int x = arc4random() % 10000;
                 NSString *key = [NSString stringWithFormat:@"%fU%d",[[NSDate date] timeIntervalSince1970],x];
                 key = [key stringByReplacingOccurrencesOfString:@"." withString:@""];
+                [returnArray2 addObject:key];
                 
                 [upManager putData:data key:key token:token
                           complete: ^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
@@ -281,7 +297,7 @@ static BC_ToolRequest *toolRequest = nil;
                               [returnArray addObject:key];
                               index++;
                           } option:nil];
-            }
+            }];
             
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 while (index != updataList.count)
@@ -290,7 +306,7 @@ static BC_ToolRequest *toolRequest = nil;
                     usleep(100);
                 }
                 _upLoadProgress = 2.0;
-                dataBlock(returnArray,nil);
+                dataBlock(returnArray2,nil);
             });
         }
         else
