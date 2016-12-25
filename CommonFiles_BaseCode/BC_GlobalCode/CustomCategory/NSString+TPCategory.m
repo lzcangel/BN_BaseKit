@@ -149,37 +149,6 @@
     return NO;
 }
 
-//密码 6 - 20位 字母、数字或下划线组成
-- (BOOL) validatePassword
-{
-    NSString *regex = @"^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z+_]{6,20}$";
-    NSPredicate *   pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
-    if ([pred evaluateWithObject:self]) {
-        return YES ;
-    }else
-        return NO;
-}
-
-//判断手机号
-- (BOOL) validateMobile
-{
-    NSString *MOBILE = @"^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|70)\\d{8}$";
-    NSPredicate *regextestmobile = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", MOBILE];
-    return [regextestmobile evaluateWithObject:self];
-}
-//判断身份证号
-- (BOOL) validateIdentityCard
-{
-    BOOL flag;
-    if (self.length <= 0) {
-        flag = NO;
-        return flag;
-    }
-    NSString *regex2 = @"^(\\d{14}|\\d{17})(\\d|[xX])$";
-    NSPredicate *identityCardPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex2];
-    return [identityCardPredicate evaluateWithObject:self];
-}
-
 - (NSString *) escapeHTML{
 	NSMutableString *s = [NSMutableString string];
 	
