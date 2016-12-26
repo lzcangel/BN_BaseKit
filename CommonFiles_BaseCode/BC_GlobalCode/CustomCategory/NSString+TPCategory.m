@@ -148,12 +148,24 @@
     }
     return NO;
 }
+//判断身份证号
+- (BOOL) validateIdentityCard
+{
+    BOOL flag;
+    if (self.length <= 0) {
+        flag = NO;
+        return flag;
+    }
+    NSString *regex2 = @"^(\\d{14}|\\d{17})(\\d|[xX])$";
+    NSPredicate *identityCardPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex2];
+    return [identityCardPredicate evaluateWithObject:self];
+}
 
 - (NSString *) escapeHTML{
 	NSMutableString *s = [NSMutableString string];
 	
 	int start = 0;
-	int len = [self length];
+	int len = (int)[self length];
 	NSCharacterSet *chs = [NSCharacterSet characterSetWithCharactersInString:@"<>&\""];
 	
 	while (start < len) {

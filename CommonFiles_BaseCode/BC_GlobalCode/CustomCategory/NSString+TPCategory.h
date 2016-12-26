@@ -71,7 +71,8 @@
 - (BOOL) isURLString;
 - (BOOL) isNumberString;
 - (BOOL) containsChinese;
-
+//判断身份证号
+- (BOOL) validateIdentityCard;
 
 /** Returns a `NSString` that properly replaces HTML specific character sequences.
  @return An escaped HTML string.
