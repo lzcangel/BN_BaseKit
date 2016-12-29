@@ -354,6 +354,7 @@ NSString *QJTL_ToolRequestErrorStr;
 +(void)showErrorCode:(NSString *)str code:(int)code
 {
     if([str isEqual:[NSNull null]])str = @"未知错误";
+    if (str.length <= 0)return;
     if(QJTL_ToolRequestErrorStr == nil || ![QJTL_ToolRequestErrorStr isEqualToString:str])
     {
         QJTL_ToolRequestErrorStr = str;
