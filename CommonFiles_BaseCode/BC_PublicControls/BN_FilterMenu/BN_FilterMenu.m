@@ -231,7 +231,7 @@
     
     self.subFilterView = [[BN_SubFilter alloc]init];
     
-    self.menuArray = @[@"please set menuArray"];
+    self.menuArray = @[@""];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(menuTapped:)];
     [self addGestureRecognizer:tap];
