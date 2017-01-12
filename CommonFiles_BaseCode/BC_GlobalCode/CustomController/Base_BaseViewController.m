@@ -57,7 +57,7 @@
 //    [self.navigationController.navigationBar setBackgroundImage:IMAGE(@"") forBarMetrics:UIBarMetricsDefault];
     
     [self.navigationController.navigationBar setBarTintColor:[UIColor blackColor]];
-   NSDictionary * dict=[NSDictionary dictionaryWithObjectsAndKeys:[UIColor blackColor],NSForegroundColorAttributeName,[UIFont boldSystemFontOfSize:16],NSFontAttributeName, nil];
+   NSDictionary * dict=[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:0.0392 green:0.2 blue:0.4392 alpha:1.0],NSForegroundColorAttributeName,[UIFont boldSystemFontOfSize:16],NSFontAttributeName, nil];
     
     self.navigationController.navigationBar.titleTextAttributes = dict;
     self.navigationController.navigationBar.translucent = NO;
