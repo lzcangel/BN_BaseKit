@@ -54,14 +54,15 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     [(Base_UITabBarBaseController*)self.tabBarController setTabBarHidden:YES animated:YES];
-//    [self.navigationController.navigationBar setBackgroundImage:IMAGE(@"") forBarMetrics:UIBarMetricsDefault];
+    //    [self.navigationController.navigationBar setBackgroundImage:IMAGE(@"") forBarMetrics:UIBarMetricsDefault];
     
-    [self.navigationController.navigationBar setBarTintColor:[UIColor blackColor]];
-   NSDictionary * dict=[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:0.0392 green:0.2 blue:0.4392 alpha:1.0],NSForegroundColorAttributeName,[UIFont boldSystemFontOfSize:16],NSFontAttributeName, nil];
+    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:0.9961 green:1.0 blue:1.0 alpha:1.0]];
+    NSDictionary * dict=[NSDictionary dictionaryWithObjectsAndKeys:[UIColor blackColor],NSForegroundColorAttributeName,[UIFont boldSystemFontOfSize:16],NSFontAttributeName, nil];
     
     self.navigationController.navigationBar.titleTextAttributes = dict;
     self.navigationController.navigationBar.translucent = NO;
     [self.navigationController.navigationBar setShadowImage:nil];
+
 //    [self setControlsFrame];
 //    [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
     
@@ -75,7 +76,7 @@
 -(void)loadCustomNavigationButton{
     UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"QJTL_NavLeftBack"] style:UIBarButtonItemStylePlain target:self action:@selector(leftButtonClick)];
     
-    leftBarButton.tintColor = [UIColor colorWithRed:0.0 green:0.1176 blue:0.4549 alpha:1.0];
+    leftBarButton.tintColor = [UIColor blackColor];
     
     self.navigationItem.leftBarButtonItem = leftBarButton;
 }
