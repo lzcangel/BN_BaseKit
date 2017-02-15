@@ -9,6 +9,7 @@
 #import "BN_MapView.h"
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "CLLocation+YCLocation.h"
 
 @interface BN_MapView()<MKMapViewDelegate,CLLocationManagerDelegate>
 {
@@ -57,8 +58,13 @@
     
     CLLocationCoordinate2D theCoordinate;
     //位置更新后的经纬度
-    theCoordinate.latitude = latitude;
-    theCoordinate.longitude = longitude;
+    
+    double lat = 0.0;
+    double lng = 0.0;
+    transform_baidu_from_mars(latitude, longitude, &lat, &lng);
+    
+    theCoordinate.latitude = lat;
+    theCoordinate.longitude = lng;
     
     MKPointAnnotation *pinAnnotation = [[MKPointAnnotation alloc] init];
     pinAnnotation.coordinate = theCoordinate;
@@ -68,9 +74,13 @@
 - (void)setDelta:(CGFloat)Delta Latitude:(CGFloat)latitude longitude:(CGFloat)longitude
 {
     CLLocationCoordinate2D theCoordinate;
-    //位置更新后的经纬度
-    theCoordinate.latitude = latitude;
-    theCoordinate.longitude = longitude;
+    
+    double lat = 0.0;
+    double lng = 0.0;
+    transform_baidu_from_mars(latitude, longitude, &lat, &lng);
+    
+    theCoordinate.latitude = lat;
+    theCoordinate.longitude = lng;
     
     MKCoordinateSpan theSpan;
     theSpan.latitudeDelta=Delta;
@@ -89,6 +99,8 @@
     }];
 }
 
+
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -98,3 +110,4 @@
 */
 
 @end
+
