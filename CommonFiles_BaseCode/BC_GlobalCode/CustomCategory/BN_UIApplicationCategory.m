@@ -7,6 +7,7 @@
 //
 
 #import "BN_UIApplicationCategory.h"
+#import <objc/runtime.h>
 
 @implementation UIApplication (BNYCategory)
 
