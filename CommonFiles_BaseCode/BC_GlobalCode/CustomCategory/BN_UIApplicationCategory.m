@@ -17,7 +17,7 @@
 }
 
 - (void)bn_sendAction:(SEL)action to:(id)responder from:(UIControl*)control forEvent:(UIEvent*)event {
-    if (YES)return;
+//    if (YES)return;
     [self bn_sendAction:action to:responder from:control forEvent:event];
 }
 
